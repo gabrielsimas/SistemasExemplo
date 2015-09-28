@@ -5,37 +5,48 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio.ContextoLimitado.Social
+namespace Dominio.Entidades
 {
     [Serializable]
-    public class TipoRedeSocial
+    public class Contato
     {
         #region Atributos
 
-        private Nullable<long> id;
+        private long id;
         private String nome;
+        private String email;
         private EnumSimNao ativo;
+
+        private IList<Telefone> telefones;
+        private IList<RedeSocial> redesSociais;
 
         #endregion
 
         #region Construtores
 
-        public TipoRedeSocial()
+        public Contato()
         {
-
+            this.telefones = new List<Telefone>();
+            this.redesSociais = new List<RedeSocial>();
         }
-        public TipoRedeSocial(Nullable<long> id, String nome, EnumSimNao ativo)
+
+        public Contato(long id, String nome, String email, EnumSimNao ativo, IList<Telefone> telefones, IList<RedeSocial> redesSociais)
         {
+            this.telefones = new List<Telefone>();
+            this.redesSociais = new List<RedeSocial>();
             this.id = id;
             this.nome = nome;
+            this.email = email;
             this.ativo = ativo;
+            this.telefones = telefones;
+            this.redesSociais = redesSociais;
         }
 
         #endregion
 
         #region Propriedades
 
-        public virtual Nullable<long> Id
+        public virtual long Id
         {
             get { return this.id; }
             set { this.id = value; }
@@ -47,21 +58,38 @@ namespace Dominio.ContextoLimitado.Social
             set { this.nome = value; }
         }
 
+        public virtual String Email
+        {
+            get { return this.email; }
+            set { this.email = value; }
+        }
+
         public virtual EnumSimNao Ativo
         {
             get { return this.ativo; }
             set { this.ativo = value; }
         }
 
+        public virtual IList<Telefone> Telefones
+        {
+            get { return this.telefones; }
+            set { this.telefones = value; }
+        }
+
+        public virtual IList<RedeSocial> RedesSociais
+        {
+            get { return this.redesSociais; }
+            set { this.redesSociais = value; }
+        }
         #endregion
 
-        #region Sobrescrita de Object
+        #region Sobrescritas
 
         public override bool Equals(object obj)
         {
-            if (obj is TipoRedeSocial)
+            if (obj is Contato)
             {
-                TipoRedeSocial objeto = (TipoRedeSocial)obj;
+                Contato objeto = (Contato)obj;
 
                 if (objeto.Id != null && this.id != null)
                 {
@@ -81,7 +109,7 @@ namespace Dominio.ContextoLimitado.Social
 
         public override int GetHashCode()
         {
-            return this.id.HasValue ? this.id.GetHashCode() : 0;
+            return this.id > 0 ? this.id.GetHashCode() : 0;
         }
 
         #endregion

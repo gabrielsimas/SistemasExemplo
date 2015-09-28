@@ -5,10 +5,10 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio.ContextoLimitado.Localizacao
+namespace Dominio.Entidades
 {
     [Serializable]
-    public class TipoTelefone
+    public class TipoRedeSocial
     {
         #region Atributos
 
@@ -20,12 +20,11 @@ namespace Dominio.ContextoLimitado.Localizacao
 
         #region Construtores
 
-        public TipoTelefone()
+        public TipoRedeSocial()
         {
 
         }
-
-        public TipoTelefone(Nullable<long> id, String nome, EnumSimNao ativo)
+        public TipoRedeSocial(Nullable<long> id, String nome, EnumSimNao ativo)
         {
             this.id = id;
             this.nome = nome;
@@ -53,15 +52,16 @@ namespace Dominio.ContextoLimitado.Localizacao
             get { return this.ativo; }
             set { this.ativo = value; }
         }
+
         #endregion
 
-        #region Sobrescritas de Object
+        #region Sobrescrita de Object
 
         public override bool Equals(object obj)
         {
-            if (obj is TipoTelefone)
+            if (obj is TipoRedeSocial)
             {
-                TipoTelefone objeto = (TipoTelefone)obj;
+                TipoRedeSocial objeto = (TipoRedeSocial)obj;
 
                 if (objeto.Id != null && this.id != null)
                 {

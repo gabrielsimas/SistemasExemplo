@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio.ContextoLimitado.Social
+namespace Dominio.Entidades
 {
     [Serializable]
     public class RedeSocial

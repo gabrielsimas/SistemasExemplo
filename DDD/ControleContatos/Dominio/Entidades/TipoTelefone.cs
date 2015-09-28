@@ -5,34 +5,31 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio.ContextoLimitado.Localizacao
+namespace Dominio.Entidades
 {
     [Serializable]
-    public class Telefone
+    public class TipoTelefone
     {
         #region Atributos
 
         private Nullable<long> id;
-        private Nullable<long> numero;
-
-        private TipoTelefone tipoTelefone;
+        private String nome;
+        private EnumSimNao ativo;
 
         #endregion
 
         #region Construtores
 
-        public Telefone()
+        public TipoTelefone()
         {
-            this.tipoTelefone = new TipoTelefone();
+
         }
 
-        public Telefone(Nullable<long> id, Nullable<long> numero, TipoTelefone tipoTelefone)
+        public TipoTelefone(Nullable<long> id, String nome, EnumSimNao ativo)
         {
-            this.tipoTelefone = new TipoTelefone();
-
             this.id = id;
-            this.numero = numero;
-            this.tipoTelefone = tipoTelefone;
+            this.nome = nome;
+            this.ativo = ativo;
         }
 
         #endregion
@@ -45,27 +42,26 @@ namespace Dominio.ContextoLimitado.Localizacao
             set { this.id = value; }
         }
         
-        public virtual Nullable<long> Numero
+        public virtual String Nome
         {
-            get { return this.numero; }
-            set { this.numero = value; }
+            get { return this.nome; }
+            set { this.nome = value; }
         }
 
-        public virtual TipoTelefone TipoTelefone
+        public virtual EnumSimNao Ativo
         {
-            get { return this.tipoTelefone; }
-            set { this.tipoTelefone = value; }
+            get { return this.ativo; }
+            set { this.ativo = value; }
         }
-
         #endregion
 
-        #region Sobrescrita de Object
+        #region Sobrescritas de Object
 
         public override bool Equals(object obj)
         {
-            if (obj is Telefone)
+            if (obj is TipoTelefone)
             {
-                Telefone objeto = (Telefone)obj;
+                TipoTelefone objeto = (TipoTelefone)obj;
 
                 if (objeto.Id != null && this.id != null)
                 {
