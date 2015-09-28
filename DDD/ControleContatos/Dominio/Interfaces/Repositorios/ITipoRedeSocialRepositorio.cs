@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Interfaces.Repositorios
 {
-    interface ITipoRedeSocialRepositorio
+    public interface ITipoRedeSocialRepositorio<TipoRedeSocial>
     {
     }
 }
