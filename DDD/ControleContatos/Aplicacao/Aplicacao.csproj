@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControleContatos.Dominio">
+      <HintPath>..\bin\ControleContatos.Dominio.dll</HintPath>
+    </Reference>
+    <Reference Include="ControleContatos.Infraestrutura">
+      <HintPath>..\bin\ControleContatos.Infraestrutura.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

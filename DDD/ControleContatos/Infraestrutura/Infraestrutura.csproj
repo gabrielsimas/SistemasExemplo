@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControleContatos.Dominio">
+      <HintPath>..\bin\ControleContatos.Dominio.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -37,8 +40,12 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="SimaSoft.Framework">
+      <HintPath>..\bin\SimaSoft.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,7 +54,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuracao\EF\ContatoConfiguration.cs" />
+    <Compile Include="Configuracao\EF\FonteDeDados\ContextoDeBanco.cs" />
+    <Compile Include="Configuracao\EF\RedeSocialConfiguration.cs" />
+    <Compile Include="Configuracao\EF\TelefoneConfiguration.cs" />
+    <Compile Include="Configuracao\EF\TipoRedeSocialConfiguration.cs" />
+    <Compile Include="Configuracao\EF\TipoTelefoneConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\EF\ContatoRepositorio.cs" />
+    <Compile Include="Repositorios\EF\RedeSocialRepositorio.cs" />
+    <Compile Include="Repositorios\EF\TelefoneRepositorio.cs" />
+    <Compile Include="Repositorios\EF\TipoRedeSocialRepositorio.cs" />
+    <Compile Include="Repositorios\EF\TipoTelefoneRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

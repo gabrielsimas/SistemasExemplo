@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using Dominio.Entidades;
 using Dominio.Interfaces.Repositorios;
 using Dominio.Interfaces.Servicos;
+using Framework.Arquitetura.DDD.Dominio.Implementacao.ServicosDeDominio.EF;
 using Framework.Arquitetura.DDD.Dominio.Interfaces.ServicosDeDominio;
 
 namespace Dominio.Implementacao.Servico
 {
-    public class TipoTelefoneServico: IServicoDeDominioBase<TipoTelefone>, ITipoTelefoneServico
+    public class TipoTelefoneServico: ServicoDeDominioBase<TipoTelefone>, ITipoTelefoneServico, IDisposable
     {
         #region Atributos
         private ITipoTelefoneRepositorio tipoTelefoneRepositorio;
@@ -18,9 +19,12 @@ namespace Dominio.Implementacao.Servico
 
         #region Construtor
         public TipoTelefoneServico(ITipoTelefoneRepositorio repositorio)
+            :base(repositorio)
         {
             this.tipoTelefoneRepositorio = repositorio;
         }
         #endregion
+
+        
     }
 }

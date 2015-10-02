@@ -43,18 +43,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidades\Contato.cs" />
+    <Compile Include="Implementacao\Servico\ContatoServico.cs" />
+    <Compile Include="Implementacao\Servico\RedeSocialServico.cs" />
+    <Compile Include="Implementacao\Servico\TelefoneServico.cs" />
+    <Compile Include="Implementacao\Servico\TipoRedeSocialServico.cs" />
+    <Compile Include="Implementacao\Servico\TipoTelefoneServico.cs" />
+    <Compile Include="Interfaces\Servicos\IContatoServico.cs" />
     <Compile Include="Entidades\EnumSimNao.cs" />
     <Compile Include="Entidades\RedeSocial.cs" />
     <Compile Include="Entidades\Telefone.cs" />
     <Compile Include="Entidades\TipoRedeSocial.cs" />
     <Compile Include="Entidades\TipoTelefone.cs" />
+    <Compile Include="Interfaces\Repositorios\IContatoRepositorio.cs" />
+    <Compile Include="Interfaces\Repositorios\IRedeSocialRepositorio.cs" />
+    <Compile Include="Interfaces\Repositorios\ITelefoneRepositorio.cs" />
+    <Compile Include="Interfaces\Repositorios\ITipoRedeSocialRepositorio.cs" />
+    <Compile Include="Interfaces\Repositorios\ITipoTelefoneRepositorio.cs" />
+    <Compile Include="Interfaces\Servicos\IRedeSocialServico.cs" />
+    <Compile Include="Interfaces\Servicos\ITelefoneServico.cs" />
+    <Compile Include="Interfaces\Servicos\ITipoRedeSocialServico.cs" />
+    <Compile Include="Interfaces\Servicos\ITipoTelefoneServico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Implementacao\Servico\" />
-    <Folder Include="Interfaces\Repositorios\" />
-    <Folder Include="Interfaces\Servicos\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetPath) $(SolutionDir)bin /y</PostBuildEvent>
