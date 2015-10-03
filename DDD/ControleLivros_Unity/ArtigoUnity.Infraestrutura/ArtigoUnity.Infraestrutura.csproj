@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ArtigoUnity.Dominio">
+      <HintPath>..\bin\ArtigoUnity.Dominio.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -51,17 +54,23 @@
     <Compile Include="EF\ContextoBD\ContextoDb.cs" />
     <Compile Include="EF\Mapeamento\MapeamentoEditora.cs" />
     <Compile Include="EF\Mapeamento\MapeamentoLivro.cs" />
+    <Compile Include="EF\Repositorio\Implementacao\EditoraRepositorio.cs" />
+    <Compile Include="EF\Repositorio\Implementacao\LivroRepositorio.cs" />
+    <Compile Include="EF\Repositorio\Implementacao\UnityOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTO\" />
-    <Folder Include="EF\Repositorio\Implementacao\" />
+    <Folder Include="IoC\MicrosoftUnity\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /y $(TargetPath) $(SolutionDir)bin</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
