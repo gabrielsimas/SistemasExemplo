@@ -7,38 +7,18 @@ using System.Threading.Tasks;
 namespace ArtigoUnity.Dominio.Entidade
 {
 	[Serializable]
-	public class Editora
+	public class Editora: Entidade
 	{
 		
 		#region Atributos
-
-		private Nullable<long> id;
+		
 		private String nome;
 
 		private ICollection<Livro> livros;
 
-		#endregion
-
-		#region Construtores
-		public Editora()
-		{
-
-		}
-
-		public Editora(Nullable<long> id, String nome)
-		{
-			this.id = id;
-			this.nome = nome;
-		}
-		#endregion
+		#endregion		
 
 		#region Propriedades
-
-		public virtual Nullable<long> Id
-		{
-			get { return this.id; }
-			set { this.id = value; }
-		}
 
 		public virtual String Nome
 		{
@@ -54,27 +34,8 @@ namespace ArtigoUnity.Dominio.Entidade
 
 		#endregion
 
-		#region Sobrescritas do Papai Object
-
-		public override bool Equals(object objeto)
-		{
-			if (objeto is Editora)
-			{
-				Editora editora = (Editora)objeto;
-				if (editora.Id.HasValue && this.Id.HasValue)
-				{
-					return editora.Id.Value.Equals(this.Id.Value);
-				}
-			}
-
-			return false;
-		}
-
-		public override int GetHashCode()
-		{
-			return this.Id.HasValue ? this.Id.Value.GetHashCode() : 0;
-		}
-
+		#region Sobrescritas do Papai Object	
+	
 		public override string ToString()
 		{
 			System.Reflection.PropertyInfo[] propriedades;

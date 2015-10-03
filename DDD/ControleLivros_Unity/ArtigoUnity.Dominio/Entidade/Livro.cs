@@ -24,24 +24,6 @@ namespace ArtigoUnity.Dominio.Entidade
 
 		#endregion
 
-		#region Construtores
-		public Livro()
-		{
-
-		}
-
-		public Livro(Nullable<long> id, String isbn, String titulo, String genero, String sinopse, String autor, Editora editora)
-		{
-			this.id = id;
-			this.isbn = isbn;
-			this.titulo = titulo;
-			this.genero = genero;
-			this.sinopse = sinopse;
-			this.autor = autor;
-			this.editora = editora;
-		}
-		#endregion
-
 		#region Propriedades
 
 		public virtual Nullable<long> Id

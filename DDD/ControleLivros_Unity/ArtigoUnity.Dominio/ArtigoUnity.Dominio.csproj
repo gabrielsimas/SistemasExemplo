@@ -40,8 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidade\Editora.cs" />
+    <Compile Include="Entidade\Entidade.cs" />
     <Compile Include="Entidade\Livro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\Interfaces\Base\IUnitOfWork.cs" />
     <Compile Include="Repositorio\Interfaces\IEditoraRepositorio.cs" />
     <Compile Include="Repositorio\Interfaces\Base\IRepositorioBase.cs" />
     <Compile Include="Repositorio\Interfaces\ILivroRepositorio.cs" />
