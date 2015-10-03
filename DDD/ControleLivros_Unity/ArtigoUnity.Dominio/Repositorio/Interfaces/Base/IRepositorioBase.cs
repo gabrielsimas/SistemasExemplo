@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 namespace ArtigoUnity.Dominio.Repositorio.Interfaces.Base
 {
     /// <summary>
-    /// Classe Base de InfraEstrutura
-    /// É a Camada Responsável por se comunicar com o Banco de Dados
-    /// Subsituto à Camada de Dao
+    /// Contrato do Domínio com o Repositório    
     /// </summary>
-    /// <typeparam name="T">Entidade a ser persistida</typeparam>
+    /// <typeparam name="T">Entidade do Domínio a ser persistida</typeparam>
     public interface IRepositorioBase<T>
         where T: class       
     {
