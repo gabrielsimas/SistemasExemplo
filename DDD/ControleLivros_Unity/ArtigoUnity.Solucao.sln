@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teste.ArtigoUnity.Infraestr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teste.ArtigoUnity.Aplicacao", "Teste.ArtigoUnity.Aplicacao\Teste.ArtigoUnity.Aplicacao.csproj", "{C61DBBC9-C3A5-47C3-A477-A9200FAFC41F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtigoUnity.Web.Mvc", "ArtigoUnity.Web.Mvc\ArtigoUnity.Web.Mvc.csproj", "{663D7A07-FA53-4902-9F78-A46321FC43F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teste.ArtigoUnity.Web.Mvc", "Teste.ArtigoUnity.Web.Mvc\Teste.ArtigoUnity.Web.Mvc.csproj", "{6152DA41-6A9A-43CA-8357-1F945C966949}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{C61DBBC9-C3A5-47C3-A477-A9200FAFC41F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C61DBBC9-C3A5-47C3-A477-A9200FAFC41F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C61DBBC9-C3A5-47C3-A477-A9200FAFC41F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{663D7A07-FA53-4902-9F78-A46321FC43F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{663D7A07-FA53-4902-9F78-A46321FC43F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{663D7A07-FA53-4902-9F78-A46321FC43F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{663D7A07-FA53-4902-9F78-A46321FC43F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6152DA41-6A9A-43CA-8357-1F945C966949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6152DA41-6A9A-43CA-8357-1F945C966949}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6152DA41-6A9A-43CA-8357-1F945C966949}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6152DA41-6A9A-43CA-8357-1F945C966949}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
