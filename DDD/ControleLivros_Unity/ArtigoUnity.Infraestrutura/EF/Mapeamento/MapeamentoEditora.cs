@@ -10,6 +10,13 @@ namespace ArtigoUnity.Infraestrutura.EF.Mapeamento
 {
     public class MapeamentoEditora : EntityTypeConfiguration<Editora>
     {
+        public MapeamentoEditora()
+        {
+            ToTable("Editora");
 
+            HasKey(e => e.Id);
+
+            Property(e => e.Nome);            
+        }
     }
 }

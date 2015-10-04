@@ -40,6 +40,15 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.4.0.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.4.0.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
+      <HintPath>..\packages\Unity.4.0.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -52,16 +61,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EF\ContextoBD\ContextoDb.cs" />
+    <Compile Include="EF\Mapeamento\Comum\LivroId.cs" />
     <Compile Include="EF\Mapeamento\MapeamentoEditora.cs" />
     <Compile Include="EF\Mapeamento\MapeamentoLivro.cs" />
     <Compile Include="EF\Repositorio\Implementacao\EditoraRepositorio.cs" />
     <Compile Include="EF\Repositorio\Implementacao\LivroRepositorio.cs" />
-    <Compile Include="EF\Repositorio\Implementacao\UnityOfWork.cs" />
+    <Compile Include="EF\Repositorio\Implementacao\RepositorioBase.cs" />
+    <Compile Include="IoC\MicrosoftUnity\ContainerDoUnity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTO\" />
-    <Folder Include="IoC\MicrosoftUnity\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
