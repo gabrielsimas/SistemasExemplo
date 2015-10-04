@@ -8,7 +8,7 @@ using ArtigoUnity.Dominio.Repositorio.Interfaces.Base;
 
 namespace ArtigoUnity.Dominio.Repositorio.Interfaces
 {
-    public interface ILivroRepositorio:IRepositorioBase<Livro>
+    public interface ILivroRepositorio:IRepositorioBase<Livro>, IUnitOfWork
     {
 
     }

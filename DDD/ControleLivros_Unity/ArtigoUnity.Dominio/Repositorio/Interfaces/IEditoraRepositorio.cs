@@ -8,7 +8,7 @@ using ArtigoUnity.Dominio.Repositorio.Interfaces.Base;
 
 namespace ArtigoUnity.Dominio.Repositorio.Interfaces
 {
-    public interface IEditoraRepositorio: IRepositorioBase<Editora>
+    public interface IEditoraRepositorio: IRepositorioBase<Editora>, IUnitOfWork
     {
 
     }

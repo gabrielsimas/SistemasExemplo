@@ -11,7 +11,7 @@ namespace ArtigoUnity.Dominio.Repositorio.Interfaces.Base
     /// </summary>
     /// <typeparam name="T">Entidade do Domínio a ser persistida</typeparam>
     public interface IRepositorioBase<T>
-        where T: class       
+        where T : class               
     {
         /// <summary>
         /// Grava uma Entidade no Banco
@@ -57,6 +57,9 @@ namespace ArtigoUnity.Dominio.Repositorio.Interfaces.Base
         /// <param name="predicado">Expressão Lambda de Filtro</param>
         /// <returns></returns>
         ICollection<T> FiltrarVariosPor(Func<T, Boolean> predicado);
+
+        ICollection<T> BuscarTodos(int pageIndex, int pageCount);
+        ICollection<T> FiltrarVariosPor(Func<T, Boolean> predicado,int pageIndex, int pageCount);
         void Dispose();
     }
 }
