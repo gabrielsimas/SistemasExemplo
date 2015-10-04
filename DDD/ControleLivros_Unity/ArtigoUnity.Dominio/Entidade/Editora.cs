@@ -18,6 +18,21 @@ namespace ArtigoUnity.Dominio.Entidade
 
 		#endregion		
 
+		#region Construtores
+
+		public Editora()
+		{
+
+		}
+
+		public Editora(Nullable<long> id, String nome, ICollection<Livro> livros)
+		{
+			this.Id = id;
+			this.nome = nome;
+			this.livros = livros;
+		}        
+		#endregion
+
 		#region Propriedades
 
 		public virtual String Nome
