@@ -21,8 +21,7 @@ namespace ArtigoUnity.Infraestrutura.EF.Mapeamento
             Property(l => l.Genero).HasColumnName("genero").HasMaxLength(100).IsRequired();
             Property(l => l.Isbn).HasColumnName("isbn").HasMaxLength(100).IsRequired();
             Property(l => l.Sinopse).HasColumnName("sinopse").HasMaxLength(500);
-            Property(l => l.Titulo).HasColumnName("titulo").HasMaxLength(100).IsRequired();
-            Property(l => l.IdEditora).HasColumnName("idEditora");
+            Property(l => l.Titulo).HasColumnName("titulo").HasMaxLength(100).IsRequired();            
 
             HasRequired(l => l.Editora).WithMany(e =>(ICollection<LivroId>) e.Livros).HasForeignKey(l => l.IdEditora);
         }

@@ -31,6 +31,12 @@ namespace ArtigoUnity.Infraestrutura.EF.Mapeamento.Comum
             this.Titulo = titulo;            
         }
 
+        public LivroId()
+            : base()
+        {
+
+        }
+
         public override string ToString()
         {
             System.Reflection.PropertyInfo[] propriedades;

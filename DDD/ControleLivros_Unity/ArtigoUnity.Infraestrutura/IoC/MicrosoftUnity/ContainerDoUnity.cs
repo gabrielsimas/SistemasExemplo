@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ArtigoUnity.Dominio.Repositorio.Interfaces;
+using ArtigoUnity.Dominio.Servico.Implementacao;
+using ArtigoUnity.Dominio.Servico.Interfaces;
 using ArtigoUnity.Infraestrutura.EF.ContextoBD;
 using ArtigoUnity.Infraestrutura.EF.Repositorio.Implementacao;
 using Microsoft.Practices.Unity;
@@ -22,7 +24,8 @@ namespace ArtigoUnity.Infraestrutura.IoC.MicrosoftUnity
         static ContainerDoUnity()
         {
             CriaContainer();
-        }
+        }        
+        
         #endregion
 
         #region Propriedades
@@ -38,18 +41,36 @@ namespace ArtigoUnity.Infraestrutura.IoC.MicrosoftUnity
         #region Injeção de Dependências
         static void CriaContainer()
         {
-            container = new UnityContainer();
-
+            if (container == null)
+            {
+                container = new UnityContainer();
+            }
+            
             //Repositorios
             container.RegisterType<DbContext, ContextoDb>(new HierarchicalLifetimeManager());
             container.RegisterType<IEditoraRepositorio, EditoraRepositorio>(new InjectionConstructor(container.Resolve<ContextoDb>()));
             container.RegisterType<ILivroRepositorio, LivroRepositorio>(new InjectionConstructor(container.Resolve<ContextoDb>()));
+
+            //Servicos de Domínio
+            container.RegisterType<ILivroServico, LivroServico>(new InjectionConstructor(container.Resolve<ILivroRepositorio>(), container.Resolve<IEditoraRepositorio>()));
+            container.RegisterType<IEditoraRepositorio>(new InjectionConstructor(container.Resolve<IEditoraRepositorio>()));
+
+            //Aplicação
+
+        }
+
+        public static void InicializaContainer(IUnityContainer containerInjetado)
+        {
+            if (containerInjetado != null)
+            {
+                CriaContainer();
+            }
         }
 
         public static IUnityContainer GetContainer()
-        {            
+        {
             CriaContainer();
-            return container;           
+            return container;
         }
 
         #endregion

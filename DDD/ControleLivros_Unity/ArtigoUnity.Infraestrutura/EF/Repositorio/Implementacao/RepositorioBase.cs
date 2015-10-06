@@ -4,14 +4,15 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ArtigoUnity.Dominio.Entidade;
 using ArtigoUnity.Dominio.Repositorio.Interfaces.Base;
 
 namespace ArtigoUnity.Infraestrutura.EF.Repositorio.Implementacao
 {
     public class RepositorioBase<T,D>
         :IRepositorioBase<T>
-        where T: class
-        where D: DbContext,IUnitOfWork
+        where T: EntidadeBase
+        where D: DbContext,IUnitOfWork,IDisposable
     {
         #region Atributos
         private D conexao;
@@ -69,6 +70,7 @@ namespace ArtigoUnity.Infraestrutura.EF.Repositorio.Implementacao
         {
             conexao.Entry(entidade).State = EntityState.Deleted;
         }
+
         public void Dispose()
         {
             conexao.Dispose();
