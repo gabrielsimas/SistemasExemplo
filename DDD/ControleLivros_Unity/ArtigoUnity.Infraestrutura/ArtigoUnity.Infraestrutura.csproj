@@ -60,6 +60,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\EditoraDto.cs" />
+    <Compile Include="DTO\Filtro\Estrategia\EstrategiaEditoraDto.cs" />
+    <Compile Include="DTO\Filtro\Estrategia\EstrategiaLivroDto.cs" />
+    <Compile Include="DTO\Filtro\Estrategia\SingularOuPlural.cs" />
+    <Compile Include="DTO\Filtro\FiltroEditoraDto.cs" />
+    <Compile Include="DTO\Filtro\FiltroLivroDto.cs" />
+    <Compile Include="DTO\LivroDto.cs" />
     <Compile Include="EF\ContextoBD\ContextoDb.cs" />
     <Compile Include="EF\Mapeamento\Comum\LivroId.cs" />
     <Compile Include="EF\Mapeamento\MapeamentoEditora.cs" />
@@ -70,9 +77,7 @@
     <Compile Include="IoC\MicrosoftUnity\ContainerDoUnity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
