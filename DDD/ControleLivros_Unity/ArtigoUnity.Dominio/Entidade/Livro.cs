@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ArtigoUnity.Dominio.Entidade
 {
     [Serializable]
-    public class Livro: Entidade
+    public class Livro: EntidadeBase
     {
         
         #region Atributos

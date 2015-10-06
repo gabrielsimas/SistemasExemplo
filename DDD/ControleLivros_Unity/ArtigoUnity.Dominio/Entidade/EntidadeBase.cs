@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ArtigoUnity.Dominio.Entidade
 {
-    public abstract class Entidade
+    public abstract class EntidadeBase
     {
         #region Atributos
 
@@ -26,13 +26,13 @@ namespace ArtigoUnity.Dominio.Entidade
         #region Sobrescritas do Papai Object
         public override bool Equals(object obj)
         {
-            if (obj == null || !(obj is Entidade))
+            if (obj == null || !(obj is EntidadeBase))
                 return false;
 
             if (Object.ReferenceEquals(this,obj))
                 return true;            
 
-            Entidade entidade = (Entidade)obj;
+            EntidadeBase entidade = (EntidadeBase)obj;
 
             return true;
 
