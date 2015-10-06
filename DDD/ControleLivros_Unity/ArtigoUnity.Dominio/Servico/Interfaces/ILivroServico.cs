@@ -8,7 +8,7 @@ using ArtigoUnity.Dominio.Servico.Interfaces.Base;
 
 namespace ArtigoUnity.Dominio.Servico.Interfaces
 {
-    public interface ILivroServico: IBaseServicoCadastrar<Livro>, IBaseServicoAlterar<Livro>, IBaseServicoApagar<Livro>, IBaseServicoListar<Livro>
+    public interface ILivroServico: IBaseServicoCadastrar<Livro>, IBaseServicoAlterar<Livro>, IBaseServicoApagar<Livro>, IBaseServicoListar<Livro>, IDisposable
     {        
         Livro BuscarLivroPorIsbn(String isbn);
         ICollection<Livro> BuscarLivrosPorTrechoDoTitulo(String trecho);

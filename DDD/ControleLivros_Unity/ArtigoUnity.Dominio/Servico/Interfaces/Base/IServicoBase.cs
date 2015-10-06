@@ -4,10 +4,12 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using ArtigoUnity.Dominio.Entidade;
 
 namespace ArtigoUnity.Dominio.Servico.Interfaces.Base
 {
     public interface IServicoBase<T>
+        where T: EntidadeBase
     {
         void Cadastrar(T entidade);
         void Alterar(T entidade);

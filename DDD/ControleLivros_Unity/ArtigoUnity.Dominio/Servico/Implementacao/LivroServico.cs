@@ -6,24 +6,62 @@ using System.Threading.Tasks;
 using ArtigoUnity.Dominio.Entidade;
 using ArtigoUnity.Dominio.Repositorio.Interfaces;
 using ArtigoUnity.Dominio.Servico.Interfaces;
+using ArtigoUnity.Infraestrutura.IoC.MicrosoftUnity;
 
 namespace ArtigoUnity.Dominio.Servico.Implementacao
 {
-    public class LivroServico: ILivroServico
+    public class LivroServico: ILivroServico, IDisposable
     {
         #region Atributos
 
         private ILivroRepositorio livroRepositorio;
+        private IEditoraRepositorio editoraRepositorio;
 
         #endregion
  
         #region Construtores
-        public LivroServico(ILivroRepositorio repositorio)
+        public LivroServico(ILivroRepositorio livroRepositorio, IEditoraRepositorio editoraRepositorio)
         {
-            this.livroRepositorio = repositorio;
+            this.livroRepositorio = livroRepositorio;
+            this.editoraRepositorio = editoraRepositorio;
         }
 
         #endregion
+
+        #region Propriedades
+
+        public ILivroRepositorio LivroRepositorio
+        {
+            get { return this.livroRepositorio; }
+            set { this.livroRepositorio = value; }
+        }
+
+        public IEditoraRepositorio EditoraRepositorio
+        {
+            get { return this.editoraRepositorio; }
+            set { this.editoraRepositorio = value; }
+        }
+
+        #endregion        
+
+        #region Método de Servico
+
+        public void Cadastrar(Livro entidade)
+        {
+            this.livroRepositorio.Salvar(entidade);
+            this.livroRepositorio.CommitAlteracoes();
+        }
+
+        public Livro BuscarPorId(long? id)
+        {
+            return this.livroRepositorio.BuscarPorId(id);
+        }
+
+        public ICollection<Livro> ListarTudo()
+        {
+            return this.livroRepositorio.BuscarTodos();
+        }
+        
         public Livro BuscarLivroPorIsbn(string isbn)
         {
             return this.livroRepositorio.BuscarTodos().Where(l => l.Isbn.Equals(isbn)).Single();
@@ -34,27 +72,22 @@ namespace ArtigoUnity.Dominio.Servico.Implementacao
             return this.livroRepositorio.BuscarTodos().Where(l => l.Titulo.StartsWith(trecho)).ToList();
         }
 
-        public ICollection<Entidade.Livro> BuscarLivrosPorGenero(string genero)
+        public ICollection<Livro> BuscarLivrosPorGenero(string genero)
         {
             return this.livroRepositorio.BuscarTodos().Where(l => l.Genero.Equals(genero)).ToList();
         }
 
-        public ICollection<Entidade.Livro> BuscarLivrosPorAutor(string nomeAutor)
+        public ICollection<Livro> BuscarLivrosPorAutor(string nomeAutor)
         {
             return this.livroRepositorio.BuscarTodos().Where(l => l.Autor.Equals(nomeAutor)).ToList();
         }
 
-        public ICollection<Entidade.Livro> BuscarLivrosPorEditora(string nomeEditora)
+        public ICollection<Livro> BuscarLivrosPorEditora(string nomeEditora)
         {
             return this.livroRepositorio.BuscarTodos().Where(l => l.Editora.Nome.Equals(nomeEditora)).ToList();
         }
 
-        public void Cadastrar(Entidade.Livro entidade)
-        {
-            this.livroRepositorio.Salvar(entidade);
-        }
-
-        public void Alterar(Entidade.Livro entidade)
+        public void Alterar(Livro entidade)
         {
             Livro livro = this.livroRepositorio.BuscarPorId(entidade.Id);
             livro.Autor = entidade.Autor;
@@ -65,21 +98,20 @@ namespace ArtigoUnity.Dominio.Servico.Implementacao
             livro.Titulo = entidade.Titulo;
 
             this.livroRepositorio.Alterar(livro);
+            this.livroRepositorio.CommitAlteracoes();
         }
 
-        public void Excluir(Entidade.Livro entidade)
+        public void Excluir(Livro entidade)
         {
             this.livroRepositorio.Excluir(entidade);
+            this.livroRepositorio.CommitAlteracoes();
+        }        
+
+        public void Dispose()
+        {
+            this.livroRepositorio.Dispose();
         }
 
-        public Entidade.Livro BuscarPorId(long? id)
-        {
-            return this.livroRepositorio.BuscarPorId(id);
-        }
-
-        public ICollection<Entidade.Livro> ListarTudo()
-        {
-            return this.livroRepositorio.BuscarTodos();
-        }
+        #endregion   
     }
 }

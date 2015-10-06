@@ -26,16 +26,19 @@ namespace ArtigoUnity.Dominio.Servico.Implementacao
         public void Cadastrar(Editora entidade)
         {
             this.editoraRepositorio.Salvar(entidade);
+            this.editoraRepositorio.CommitAlteracoes();
         }
 
         public void Alterar(Editora entidade)
         {
             this.editoraRepositorio.Alterar(entidade);
+            this.editoraRepositorio.CommitAlteracoes();
         }
 
         public void Excluir(Editora entidade)
         {
             this.editoraRepositorio.Excluir(entidade);
+            this.editoraRepositorio.CommitAlteracoes();
         }
 
         public Editora BuscarPorId(long? id)
@@ -53,5 +56,25 @@ namespace ArtigoUnity.Dominio.Servico.Implementacao
             this.editoraRepositorio.Dispose();
         }
         #endregion
+
+        public Editora BuscarPorNome(string nomeEditora)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICollection<Editora> BuscarPorNomeLike(string nomeEditora)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Editora FiltrarUmPor(Func<Editora, bool> lambda)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICollection<Editora> FiltrarVariosPor(Func<Editora, bool> lambda)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

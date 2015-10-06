@@ -8,8 +8,9 @@ using ArtigoUnity.Dominio.Servico.Interfaces.Base;
 
 namespace ArtigoUnity.Dominio.Servico.Interfaces
 {
-    public interface IEditoraServico : IBaseServicoCadastrar<Editora>, IBaseServicoAlterar<Editora>, IBaseServicoApagar<Editora>, IBaseServicoListar<Editora>
+    public interface IEditoraServico : IBaseServicoCadastrar<Editora>, IBaseServicoAlterar<Editora>, IBaseServicoApagar<Editora>, IBaseServicoListar<Editora>, IBaseServicoFiltrarPor<Editora>, IDisposable
     {
-        
+        Editora BuscarPorNome(String nomeEditora);
+        ICollection<Editora> BuscarPorNomeLike(String nomeEditora);
     }
 }
