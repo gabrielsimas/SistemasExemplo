@@ -96,7 +96,7 @@ namespace Teste.ArtigoUnity.Infraestrutura.EF.Repositorio
         #endregion
 
         [TestMethod]
-        public void SalvaEditora()
+        public void Salvar()
         {
             Nullable<long> id;
             Editora editora = new Editora()
@@ -109,6 +109,6 @@ namespace Teste.ArtigoUnity.Infraestrutura.EF.Repositorio
             Repositorio.CommitAlteracoes();
 
             Assert.IsTrue(editora.Id.HasValue);
-        }
+        }        
     }
 }

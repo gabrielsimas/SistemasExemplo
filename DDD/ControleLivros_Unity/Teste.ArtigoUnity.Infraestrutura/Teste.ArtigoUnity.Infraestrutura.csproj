@@ -76,6 +76,7 @@
     <Compile Include="Comum\InfraDeTeste.cs" />
     <Compile Include="EF\DataSource\TesteContextoDb.cs" />
     <Compile Include="EF\Repositorio\EditoraRepositorioTeste.cs" />
+    <Compile Include="EF\Repositorio\LivroRepositorioTeste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
