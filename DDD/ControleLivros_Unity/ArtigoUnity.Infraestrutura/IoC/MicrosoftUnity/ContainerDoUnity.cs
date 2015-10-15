@@ -4,6 +4,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ArtigoUnity.Aplicacao.Servico.Fachada;
+using ArtigoUnity.Aplicacao.Servico.Implementacao;
 using ArtigoUnity.Dominio.Repositorio.Interfaces;
 using ArtigoUnity.Dominio.Servico.Implementacao;
 using ArtigoUnity.Dominio.Servico.Interfaces;
@@ -23,7 +25,7 @@ namespace ArtigoUnity.Infraestrutura.IoC.MicrosoftUnity
         #region Construtores
         static ContainerDoUnity()
         {
-            CriaContainer();
+            //CriaContainer();
         }        
         
         #endregion
@@ -35,16 +37,17 @@ namespace ArtigoUnity.Infraestrutura.IoC.MicrosoftUnity
             {
                 return container;
             }
+
+            set
+            {
+                container = value;
+            }
         }
         #endregion
 
         #region Injeção de Dependências
-        static void CriaContainer()
-        {
-            if (container == null)
-            {
-                container = new UnityContainer();
-            }
+        static void CriaContainer(IUnityContainer container)
+        {        
             
             //Repositorios
             container.RegisterType<DbContext, ContextoDb>(new HierarchicalLifetimeManager());
@@ -53,25 +56,19 @@ namespace ArtigoUnity.Infraestrutura.IoC.MicrosoftUnity
 
             //Servicos de Domínio
             container.RegisterType<ILivroServico, LivroServico>(new InjectionConstructor(container.Resolve<ILivroRepositorio>(), container.Resolve<IEditoraRepositorio>()));
-            container.RegisterType<IEditoraRepositorio>(new InjectionConstructor(container.Resolve<IEditoraRepositorio>()));
+            container.RegisterType<IEditoraServico, EditoraServico>(new InjectionConstructor(container.Resolve<IEditoraRepositorio>()));
 
-            //Aplicação
+            //Aplicação            
+            container.RegisterType<ILivroAplicServico, LivroAplicServico>(new InjectionConstructor(container.Resolve<ILivroServico>(), container.Resolve<IEditoraServico>()));
+            container.RegisterType<IEditoraAplicServico, EditoraAplicServico>();
+            
 
         }
 
         public static void InicializaContainer(IUnityContainer containerInjetado)
-        {
-            if (containerInjetado != null)
-            {
-                CriaContainer();
-            }
-        }
-
-        public static IUnityContainer GetContainer()
-        {
-            CriaContainer();
-            return container;
-        }
+        {            
+                CriaContainer(containerInjetado);         
+        }        
 
         #endregion
 

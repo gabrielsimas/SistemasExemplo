@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ArtigoUnity.Aplicacao">
+      <HintPath>..\bin\ArtigoUnity.Aplicacao.dll</HintPath>
+    </Reference>
     <Reference Include="ArtigoUnity.Dominio">
       <HintPath>..\bin\ArtigoUnity.Dominio.dll</HintPath>
     </Reference>
@@ -74,6 +77,7 @@
     <Compile Include="EF\Repositorio\Implementacao\EditoraRepositorio.cs" />
     <Compile Include="EF\Repositorio\Implementacao\LivroRepositorio.cs" />
     <Compile Include="EF\Repositorio\Implementacao\RepositorioBase.cs" />
+    <Compile Include="EF\Repositorio\Interfaces\IUnitOfWork.cs" />
     <Compile Include="IoC\MicrosoftUnity\ContainerDoUnity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

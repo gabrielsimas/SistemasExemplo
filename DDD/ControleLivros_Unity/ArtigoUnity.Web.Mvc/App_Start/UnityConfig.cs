@@ -1,7 +1,18 @@
 using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ArtigoUnity.Aplicacao.Servico.Fachada;
+using ArtigoUnity.Aplicacao.Servico.Implementacao;
+using ArtigoUnity.Dominio.Repositorio.Interfaces;
+using ArtigoUnity.Dominio.Servico.Implementacao;
+using ArtigoUnity.Dominio.Servico.Interfaces;
+using ArtigoUnity.Infraestrutura.EF.ContextoBD;
+using ArtigoUnity.Infraestrutura.EF.Repositorio.Implementacao;
 using ArtigoUnity.Infraestrutura.IoC.MicrosoftUnity;
 using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Configuration;
 
 namespace ArtigoUnity.Web.Mvc.App_Start
 {
@@ -33,7 +44,7 @@ namespace ArtigoUnity.Web.Mvc.App_Start
         /// change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            ContainerDoUnity.InicializaContainer(container);
+            ContainerDoUnity.InicializaContainer(container);            
         }
     }
 }

@@ -13,7 +13,6 @@ namespace ArtigoUnity.Aplicacao.Servico.Fachada
         void CadastrarEditora(EditoraDto dto);
         EditoraDto ListaEditoraPorId(Nullable<long> id);
         IEnumerable<EditoraDto> ListarTodasAsEditoras(int totalPaginas, int paginaAtual);
-
         Object ListarEditora(FiltroEditoraDto filtro);
         void AlterarDadosEditora(EditoraDto dto);
         void ExcluirEditora(EditoraDto dto);

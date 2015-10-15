@@ -103,7 +103,7 @@ namespace ArtigoUnity.Aplicacao.Servico.Implementacao
                        break;
 
                     case EstrategiaEditoraDto.PorNomeLike:
-                       dtos = FiltraEditoraPorNomeLoke(filtro.Nome);
+                       dtos = FiltraEditoraPorNomeLike(filtro.Nome);
                        break;
 
                 }
@@ -154,7 +154,7 @@ namespace ArtigoUnity.Aplicacao.Servico.Implementacao
             throw new NotImplementedException();
         }
 
-        private ICollection<EditoraDto> FiltraEditoraPorNomeLoke(String Nome){
+        private ICollection<EditoraDto> FiltraEditoraPorNomeLike(String Nome){
             throw new NotImplementedException();
         }
     }

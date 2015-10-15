@@ -33,7 +33,8 @@ namespace Teste.ArtigoUnity.Infraestrutura.Comum
         [TestInitialize]
         public void AbrindoAFirma()
         {
-            this.Container = ContainerDoUnity.GetContainer();
+            if (container == null) container = new UnityContainer();
+            ContainerDoUnity.InicializaContainer(container);
         }
 
         [TestCleanup]
