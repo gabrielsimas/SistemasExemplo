@@ -1,0 +1,62 @@
+﻿<div>
+
+    <h3>Consulta de Produtos</h3>
+
+    <p>
+        {{mensagem}}
+    </p>
+
+    <table class="table table-hover" ng-init="ListarTodasAsCategorias()">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nome do Produto</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="p in categorias">
+                <td> {{p.Id}} </td>
+                <td> {{p.Nome}} </td>
+                <td>
+                    <button class="btn btn-primary btn-sm"
+                            ng-click="ConsultarPorId(p.Id)"
+                            data-target="#janela" data-toggle="modal">
+                        Abrir Categoria
+                    </button>
+                </td>
+            </tr>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2"> Registros: {{ categorias.length }} </td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+<!-- Janela modal em bootstrap -->
+<div id="janela" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header bg-primary">
+                Consultar Categorias
+            </div>
+
+            <div class="modal-body">
+                <label>Categoria:</label>
+                <input type="text" class="form-control"
+                       placeholder="Digite aqui" ng-model="Model.Nome" />
+                <br />
+                <div class="modal-footer">
+                    <button class="btn btn-primary"
+                            data-dismiss="modal">
+                        Atualizar Produto
+                    </button>
+                </div>
+
+        </div>
+    </div>
+</div>

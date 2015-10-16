@@ -1,0 +1,22 @@
+﻿<div>
+
+    <h3>Cadastro de Categorias</h3>
+
+    <div class="col-md-4">
+
+        <label>Categoria:</label>
+        <input type="text" class="form-control"
+               placeholder="Digite aqui" ng-model="CategoriaCadastroModel.Nome" />
+        <br />
+        
+        <button class="btn btn-primary btn-block" ng-click="CadastrarCategoria()">
+            Cadastrar Categoria
+        </button>
+
+        <hr />
+
+        {{mensagem}}
+
+    </div>
+
+</div>

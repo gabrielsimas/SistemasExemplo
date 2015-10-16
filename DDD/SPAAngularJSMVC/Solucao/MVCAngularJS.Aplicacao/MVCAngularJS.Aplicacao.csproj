@@ -39,6 +39,10 @@
     <Reference Include="MVCAngularJS.Infraestrutura">
       <HintPath>..\bin\MVCAngularJS.Infraestrutura.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="SimaSoft.Framework">
       <HintPath>..\bin\SimaSoft.Framework.dll</HintPath>
     </Reference>
@@ -59,11 +63,16 @@
     <Compile Include="Fachada\IFachadaMestre.cs" />
     <Compile Include="Fachada\IUnidadeApp.cs" />
     <Compile Include="Implementacao\AppServicoMestre.cs" />
+    <Compile Include="Implementacao\CategoriaAppServico.cs" />
+    <Compile Include="Implementacao\ConsumoAppServico.cs" />
     <Compile Include="Implementacao\Montador\Assembler.cs" />
     <Compile Include="Implementacao\Montador\Mounter.cs" />
+    <Compile Include="Implementacao\UnidadeAppServico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /y $(TargetPath) $(SolutionDir)bin</PostBuildEvent>

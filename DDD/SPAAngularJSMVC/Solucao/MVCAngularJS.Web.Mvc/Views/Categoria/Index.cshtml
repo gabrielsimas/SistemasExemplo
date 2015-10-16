@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html ng-app="aplicacao">
+<head>
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>    
+    <script src="Scripts/bootstrap.js"></script>
+    
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+
+    <script src="Angular/aplicacao.js"></script>
+    <script src="Angular/Controllers/categoria_controller.js"></script>
+
+
+
+</head>
+<body class="container">
+    <div class="well">
+
+        <h2>Projeto de Integra&ccedil;&atilde;o entre ASP.NET MVC e AngularJS</h2>
+
+        <ul>            
+            <li><a href="#cadastro">Cadastrar Categorias</a></li>
+            <li><a href="#consulta">Consultar Categorias</a></li>
+        </ul>
+
+    </div>
+
+    <div ng-view>
+    </div>
+
+</body>
+</html>

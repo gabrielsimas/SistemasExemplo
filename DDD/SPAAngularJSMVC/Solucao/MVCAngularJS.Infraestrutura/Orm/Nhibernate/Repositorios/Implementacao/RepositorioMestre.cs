@@ -32,18 +32,18 @@ namespace MVCAngularJS.Infraestrutura.Orm.Nhibernate.Repositorios.Implementacao
         #endregion
 
         public void Salvar(T entidade)
-        {                        
-            Sessao.Save(entidade);
+        {            
+            Sessao.Save(entidade);            
         }
 
         public void Alterar(T entidade)
-        {         
-            Sessao.Update(entidade);                        
+        {            
+            Sessao.Update(entidade);            
         }
 
         public void Excluir(T entidade)
         {            
-            Sessao.Delete(entidade);            
+            Sessao.Delete(entidade);         
         }
         public ICollection<T> BuscarTodos()
         {         

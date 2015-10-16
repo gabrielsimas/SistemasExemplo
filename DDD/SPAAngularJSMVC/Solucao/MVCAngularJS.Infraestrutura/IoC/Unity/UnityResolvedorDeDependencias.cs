@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
+using MVCAngularJS.Aplicacao.Fachada;
+using MVCAngularJS.Aplicacao.Implementacao;
 using MVCAngularJS.Dominio.Contrato.Repositorio;
+using MVCAngularJS.Dominio.Contrato.Servico;
+using MVCAngularJS.Dominio.Servico;
 using MVCAngularJS.Infraestrutura.Orm.Nhibernate.Configuracao;
 using MVCAngularJS.Infraestrutura.Orm.Nhibernate.Repositorios.Implementacao;
 
@@ -51,15 +55,16 @@ namespace MVCAngularJS.Infraestrutura.IoC.Unity
             container.RegisterType<ICategoriaRepositorio, CategoriaRepositorio>(new InjectionConstructor(container.Resolve<IUnitOfWork>()));
             
             //Servicos de Domínio
-            /*
-            container.RegisterType<ILivroServico, LivroServico>(new InjectionConstructor(container.Resolve<ILivroRepositorio>(), container.Resolve<IEditoraRepositorio>()));
-            container.RegisterType<IEditoraServico, EditoraServico>(new InjectionConstructor(container.Resolve<IEditoraRepositorio>()));
-            */
-            //Aplicação            
-            /*
-            container.RegisterType<ILivroAplicServico, LivroAplicServico>(new InjectionConstructor(container.Resolve<ILivroServico>(), container.Resolve<IEditoraServico>()));
-            container.RegisterType<IEditoraAplicServico, EditoraAplicServico>();
-             */           
+
+            container.RegisterType<ICategoriaServico, CategoriaServico>(new InjectionConstructor(container.Resolve<ICategoriaRepositorio>()));
+            container.RegisterType<IUnidadeServico, UnidadeServico>(new InjectionConstructor(container.Resolve<IUnidadeRepositorio>()));
+            container.RegisterType<IConsumoServico, ConsumoServico>(new InjectionConstructor(container.Resolve<IConsumoRepositorio>()));
+
+            // Aplicação
+            container.RegisterType<ICategoriaApp, CategoriaAppServico>(new InjectionConstructor(container.Resolve<ICategoriaServico>()));
+            container.RegisterType<IUnidadeApp, UnidadeAppServico>(new InjectionConstructor(container.Resolve<IUnidadeServico>()));
+            container.RegisterType<IConsumoApp, ConsumoAppServico>(new InjectionConstructor(container.Resolve<IConsumoServico>()));
+
         }
 
         public static void InicializaContainer(IUnityContainer containerInjetado)

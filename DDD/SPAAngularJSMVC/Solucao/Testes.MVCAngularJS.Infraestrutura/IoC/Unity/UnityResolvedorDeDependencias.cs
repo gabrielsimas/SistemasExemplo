@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
+using MVCAngularJS.Dominio.Contrato.Servico;
+using MVCAngularJS.Dominio.Servico;
 using Teste.MVCAngularJS.Infraestrutura.Nhibernate.FluentApi.Configuracao;
 using Teste.MVCAngularJS.Infraestrutura.Nhibernate.Repositorios.Implementacao;
 using Teste.MVCAngularJS.Infraestrutura.Nhibernate.Repositorios.Interfaces;
@@ -52,6 +54,7 @@ namespace Teste.MVCAngularJS.Infraestrutura.IoC.Unity
             container.RegisterType<ICategoriaRepositorio, CategoriaRepositorio>(new InjectionConstructor(container.Resolve<IUnitOfWork>()));
             
             //Servicos de Domínio            
+            container.RegisterType<ICategoriaServico, CategoriaServico>(new InjectionConstructor(container.Resolve<ICategoriaRepositorio>()));
             /*
             container.RegisterType<ILivroServico, LivroServico>(new InjectionConstructor(container.Resolve<ILivroRepositorio>(), container.Resolve<IEditoraRepositorio>()));
             container.RegisterType<IEditoraServico, EditoraServico>(new InjectionConstructor(container.Resolve<IEditoraRepositorio>()));
