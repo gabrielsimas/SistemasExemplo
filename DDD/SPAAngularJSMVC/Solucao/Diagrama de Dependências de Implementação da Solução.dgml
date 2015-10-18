@@ -1,29 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DirectedGraph DataVirtualized="True" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
-    <Node Id="@2" Category="CodeSchema_Assembly" AssemblyTimestamp="10/15/2015 09:11:02" Bounds="330.59,213.24019738016,214.82,25" CodeSchemaProperty_StrongName="MVCAngularJS.Infraestrutura, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(ae8798c7-b069-4067-98c9-0a82923b576d.OutputPath)" Group="Collapsed" Label="MVCAngularJS.Infraestrutura.dll" UseManualLocation="True">
+    <Node Id="@10" Category="CodeSchema_Assembly" AssemblyTimestamp="10/15/2015 08:23:40" Bounds="139.211264819705,90.6206102857511,187.12,25" CodeSchemaProperty_StrongName="MVCAngularJS.Dominio, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(9445397f-e406-4b2b-9d84-90b98048a475.OutputPath)" Group="Collapsed" Label="MVCAngularJS.Dominio.dll" UseManualLocation="True">
       <Category Ref="FileSystem.Category.FileOfType.dll" />
     </Node>
-    <Node Id="@4" Category="CodeSchema_Assembly" AssemblyTimestamp="10/15/2015 07:08:54" Bounds="329.163333333333,117,221.673333333333,25" CodeSchemaProperty_StrongName="Artigo.MVCAngularJS.Entidade, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(8796e1a4-73b8-46eb-a457-62e74baf045b.OutputPath)" Group="Collapsed" Label="Artigo.MVCAngularJS.Entidade.dll" UseManualLocation="True">
+    <Node Id="@2" Category="CodeSchema_Assembly" AssemblyTimestamp="10/15/2015 09:11:02" Bounds="238.726078635306,212.620810285751,214.82,25" CodeSchemaProperty_StrongName="MVCAngularJS.Infraestrutura, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(ae8798c7-b069-4067-98c9-0a82923b576d.OutputPath)" Group="Collapsed" Label="MVCAngularJS.Infraestrutura.dll" UseManualLocation="True">
       <Category Ref="FileSystem.Category.FileOfType.dll" />
     </Node>
-    <Node Id="@6" Category="CodeSchema_Assembly" AssemblyTimestamp="10/15/2015 08:59:49" Bounds="346.653333333333,-37,192.693333333333,25" CodeSchemaProperty_StrongName="MVCAngularJS.Aplicacao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(fcca6a07-1e3d-42d8-a9a3-5940ac0e302e.OutputPath)" Group="Collapsed" Label="MVCAngularJS.Aplicacao.dll" UseManualLocation="True">
+    <Node Id="@4" Category="CodeSchema_Assembly" Bounds="266.152714928065,-119.932392568455,191.47,25" CodeSchemaProperty_StrongName="MVCAngularJS.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(89e60418-8c02-49cc-94ac-7cbbe93ecf6d.OutputPath)" Group="Collapsed" Label="MVCAngularJS.Web.Mvc.dll" UseManualLocation="True" />
+    <Node Id="@6" Category="CodeSchema_Assembly" AssemblyTimestamp="10/15/2015 07:08:54" Bounds="376.237962347963,90.6207102857511,221.673333333333,25" CodeSchemaProperty_StrongName="Artigo.MVCAngularJS.Entidade, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(8796e1a4-73b8-46eb-a457-62e74baf045b.OutputPath)" Group="Collapsed" Label="Artigo.MVCAngularJS.Entidade.dll" UseManualLocation="True">
       <Category Ref="FileSystem.Category.FileOfType.dll" />
     </Node>
-    <Node Id="@8" Category="CodeSchema_Assembly" AssemblyTimestamp="10/15/2015 08:23:40" Bounds="344.44,55,187.12,25" CodeSchemaProperty_StrongName="MVCAngularJS.Dominio, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(9445397f-e406-4b2b-9d84-90b98048a475.OutputPath)" Group="Collapsed" Label="MVCAngularJS.Dominio.dll">
+    <Node Id="@8" Category="CodeSchema_Assembly" AssemblyTimestamp="10/15/2015 08:59:49" Bounds="258.546078635307,-1.3794897142489,192.693333333333,25" CodeSchemaProperty_StrongName="MVCAngularJS.Aplicacao, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(fcca6a07-1e3d-42d8-a9a3-5940ac0e302e.OutputPath)" Group="Collapsed" Label="MVCAngularJS.Aplicacao.dll" UseManualLocation="True">
       <Category Ref="FileSystem.Category.FileOfType.dll" />
     </Node>
   </Nodes>
   <Links>
-    <Link Source="@2" Target="@4" Category="References" Bounds="438.259766715785,150.99805724133,1.29347490618659,62.2421401388299" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="9" />
-    <Link Source="@2" Target="@8" Category="References" Bounds="318.456726074219,82.80810546875,99.0829467773438,130.432098388672" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="17">
+    <Link Source="@10" Target="@6" Category="References" Bounds="326.331264819705,103.120647076456,40.9066975282591,1.60857870099562E-05" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="12" />
+    <Link Source="@2" Target="@10" Category="References" Bounds="250.512842643108,122.213624863374,84.0080077163837,90.4071854223768" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="17">
       <Category Ref="Implements" />
     </Link>
-    <Link Source="@6" Target="@4" Category="References" Bounds="461.037078857422,-12,81.2295227050781,125.767395019531" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="9" />
-    <Link Source="@6" Target="@8" Category="References" Bounds="439.167757488271,-12,3.15289468564151,58.0132622158046" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="15">
+    <Link Source="@2" Target="@6" Category="References" Bounds="360.576492042685,121.511040854075,105.253018883548,91.1097694316757" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="9" />
+    <Link Source="@4" Target="@2" Category="CodeSchema_Calls" Bounds="347.15396515328,-94.9323925684549,14.1416777334703,298.563281718208" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="1" />
+    <Link Source="@4" Target="@8" Category="References" Bounds="356.160386540804,-94.9323925684549,4.98979165706641,84.5685281286103" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="12">
       <Category Ref="CodeSchema_Calls" />
     </Link>
-    <Link Source="@8" Target="@4" Category="References" Bounds="438.403225806452,80,0.903376740998169,28.0046789709427" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="12" />
+    <Link Source="@8" Target="@10" Category="References" Bounds="256.552267078328,23.6205102857511,81.7479038022221,61.584704794721" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="15">
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@8" Target="@6" Category="References" Bounds="372.852201329332,23.6205102857511,88.8760716982865,61.858827713724" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="9" />
   </Links>
   <Categories>
     <Category Id="CodeSchema_Assembly" Label="Assembly" BasedOn="File" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Assembly" NavigationActionLabel="Assemblies" />
@@ -47,7 +52,7 @@
     <Property Id="FilePath" Label="File Path" Description="File Path" DataType="System.String" />
     <Property Id="Group" Label="Group" Description="Display the node as a group" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
     <Property Id="GroupLabel" DataType="System.String" />
-    <Property Id="Icon" DataType="System.String" />
+    <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
     <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
     <Property Id="IsEnabled" DataType="System.Boolean" />
     <Property Id="IsProviderRoot" Label="IsProviderRoot" Description="IsProviderRoot" DataType="System.Boolean" />
@@ -69,12 +74,14 @@
   <IdentifierAliases>
     <Alias n="1" Uri="Assembly=$(ae8798c7-b069-4067-98c9-0a82923b576d.OutputPathUri)" />
     <Alias n="2" Id="(@1)" />
-    <Alias n="3" Uri="Assembly=$(8796e1a4-73b8-46eb-a457-62e74baf045b.OutputPathUri)" />
+    <Alias n="3" Uri="Assembly=$(89e60418-8c02-49cc-94ac-7cbbe93ecf6d.OutputPathUri)" />
     <Alias n="4" Id="(@3)" />
-    <Alias n="5" Uri="Assembly=$(fcca6a07-1e3d-42d8-a9a3-5940ac0e302e.OutputPathUri)" />
+    <Alias n="5" Uri="Assembly=$(8796e1a4-73b8-46eb-a457-62e74baf045b.OutputPathUri)" />
     <Alias n="6" Id="(@5)" />
-    <Alias n="7" Uri="Assembly=$(9445397f-e406-4b2b-9d84-90b98048a475.OutputPathUri)" />
+    <Alias n="7" Uri="Assembly=$(fcca6a07-1e3d-42d8-a9a3-5940ac0e302e.OutputPathUri)" />
     <Alias n="8" Id="(@7)" />
+    <Alias n="9" Uri="Assembly=$(9445397f-e406-4b2b-9d84-90b98048a475.OutputPathUri)" />
+    <Alias n="10" Id="(@9)" />
   </IdentifierAliases>
   <Styles>
     <Style TargetType="Node" GroupLabel="Results" ValueLabel="True">
@@ -206,6 +213,8 @@
   <Paths>
     <Path Id="8796e1a4-73b8-46eb-a457-62e74baf045b.OutputPath" Value="E:\Sistemas\SistemasExemplo\DDD\SPAAngularJSMVC\Solucao\MVCAngularJS.Entidade\bin\Debug\Artigo.MVCAngularJS.Entidade.dll" />
     <Path Id="8796e1a4-73b8-46eb-a457-62e74baf045b.OutputPathUri" Value="file:///E:/Sistemas/SistemasExemplo/DDD/SPAAngularJSMVC/Solucao/MVCAngularJS.Entidade/bin/Debug/Artigo.MVCAngularJS.Entidade.dll" />
+    <Path Id="89e60418-8c02-49cc-94ac-7cbbe93ecf6d.OutputPath" Value="E:\Sistemas\SistemasExemplo\DDD\SPAAngularJSMVC\Solucao\MVCAngularJS.Web.Mvc\bin\MVCAngularJS.Web.Mvc.dll" />
+    <Path Id="89e60418-8c02-49cc-94ac-7cbbe93ecf6d.OutputPathUri" Value="file:///E:/Sistemas/SistemasExemplo/DDD/SPAAngularJSMVC/Solucao/MVCAngularJS.Web.Mvc/bin/MVCAngularJS.Web.Mvc.dll" />
     <Path Id="9445397f-e406-4b2b-9d84-90b98048a475.OutputPath" Value="E:\Sistemas\SistemasExemplo\DDD\SPAAngularJSMVC\Solucao\MVCAngularJS.Dominio\bin\Debug\MVCAngularJS.Dominio.dll" />
     <Path Id="9445397f-e406-4b2b-9d84-90b98048a475.OutputPathUri" Value="file:///E:/Sistemas/SistemasExemplo/DDD/SPAAngularJSMVC/Solucao/MVCAngularJS.Dominio/bin/Debug/MVCAngularJS.Dominio.dll" />
     <Path Id="ae8798c7-b069-4067-98c9-0a82923b576d.OutputPath" Value="E:\Sistemas\SistemasExemplo\DDD\SPAAngularJSMVC\Solucao\MVCAngularJS.Infraestrutura\bin\Debug\MVCAngularJS.Infraestrutura.dll" />

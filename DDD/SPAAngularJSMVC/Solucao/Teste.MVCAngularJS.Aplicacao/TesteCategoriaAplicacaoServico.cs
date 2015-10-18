@@ -70,14 +70,8 @@ namespace Teste.MVCAngularJS.Aplicacao
             {
                 Nome = "Conta do Telefone Celular"
             };
-
-            
-
-            //categoriaAplicacao.BeginTransaction();
                 
             categoriaAplicacao.Cadastrar(contaDeTelefone);
-
-            //categoriaAplicacao.Commit();
 
             Assert.IsTrue(true);
             
