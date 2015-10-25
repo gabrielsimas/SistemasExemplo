@@ -8,3 +8,6 @@ O que a aplicação têm:
 - WebForms
 - Camadas sobrepostas causando uma grande confusão no código.
 
+Como a aplicação vai ficar:
+- Substituindo a arquitetura d
+
