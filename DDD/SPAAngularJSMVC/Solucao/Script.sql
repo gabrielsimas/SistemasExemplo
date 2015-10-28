@@ -45,3 +45,6 @@ GO
 ALTER TABLE Consumo ADD CONSTRAINT FK_Consumo_Unidade FOREIGN KEY(idUnidade)
 	REFERENCES Unidade(id)
 GO
+
+SELECT * FROM Categoria
+GO
