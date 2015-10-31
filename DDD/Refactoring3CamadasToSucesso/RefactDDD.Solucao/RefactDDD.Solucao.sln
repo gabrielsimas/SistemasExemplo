@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apresentacao.Web.Mvc", "Apr
 		{A45AB5D7-ACDA-4B72-A869-D69075105BF7} = {A45AB5D7-ACDA-4B72-A869-D69075105BF7}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Testes", "2 - Testes", "{74143146-F35E-4E90-A5E2-D3773768D254}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
