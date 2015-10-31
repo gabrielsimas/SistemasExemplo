@@ -67,7 +67,7 @@ namespace ArtigoUnity.Infraestrutura.EF.Repositorio.Implementacao
         {
             conexao.Entry(entidade).State = EntityState.Modified;
         }               
-        public void Excluir(T entidade)
+        public void Exclui>r(T entidade)
         {
             conexao.Entry(entidade).State = EntityState.Deleted;
         }
