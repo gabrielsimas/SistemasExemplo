@@ -33,6 +33,16 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Sgtv2.Ddd.Dominio">
+      <HintPath>..\bin\Sgtv2.Ddd.Dominio.dll</HintPath>
+    </Reference>
+    <Reference Include="Sgtv2.Ddd.Infraestrutura">
+      <HintPath>..\bin\Sgtv2.Ddd.Infraestrutura.dll</HintPath>
+    </Reference>
+    <Reference Include="SimaSoft.Framework, Version=1.0.5747.33068, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\SimaSoft.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,13 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\TarefaDto.cs" />
+    <Compile Include="Dto\UsuarioDto.cs" />
+    <Compile Include="Montador\Montador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servico\Fachada\ITarefaAplicServico.cs" />
+    <Compile Include="Servico\Fachada\IUsuarioAplicServico.cs" />
+    <Compile Include="Servico\Implementacao\TarefaAplicServico.cs" />
+    <Compile Include="Servico\Implementacao\UsuarioAplicServico.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dto\" />
-    <Folder Include="Servico\Fachada\" />
-    <Folder Include="Servico\Implementacao\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /y $(TargetPath) $(SolutionDir)bin</PostBuildEvent>
