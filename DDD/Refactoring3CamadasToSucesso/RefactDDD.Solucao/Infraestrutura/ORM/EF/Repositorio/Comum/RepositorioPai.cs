@@ -11,7 +11,7 @@ namespace Infraestrutura.ORM.EF.Repositorio.Comum
     public class RepositorioPai<T,D>
         :IRepositorioPai<T>
         where T: class
-        where D: DbContext
+        where D: DbContext,IUnitOfWork,IDisposable
     {
         #region Atributos
 
@@ -23,6 +23,7 @@ namespace Infraestrutura.ORM.EF.Repositorio.Comum
         public RepositorioPai(D contexto)
         {
             this.conexao = contexto;
+            conexao.Database.Log = Console.Write;
         }
 
         #endregion
@@ -45,6 +46,7 @@ namespace Infraestrutura.ORM.EF.Repositorio.Comum
 
         public void Excluir(T entidade)
         {
+            
             conexao.Entry(entidade).State = EntityState.Deleted;
         }
 
@@ -57,6 +59,26 @@ namespace Infraestrutura.ORM.EF.Repositorio.Comum
         {
             return this.conexao.Set<T>().AsNoTracking().Where(predicado).SingleOrDefault();
         }
-        #endregion
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CommitAlteracoes()
+        {
+            conexao.CommitAlteracoes();
+        }
+
+        public void CommitaERefresha()
+        {
+            conexao.CommitaERefresha();
+        }
+
+        public void DesfazAlteracoes()
+        {
+            conexao.DesfazAlteracoes();
+        }
+        #endregion        
     }
 }

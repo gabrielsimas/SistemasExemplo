@@ -9,12 +9,24 @@ namespace Infraestrutura.ORM.EF.Mapeamento.Comum
 {
     public class TarefaId: Tarefa
     {
-        private Nullable<long> idTarefa;
+        private Nullable<long> idUsuario;
 
-        public virtual Nullable<long> IdTarefa
+        public virtual Nullable<long> IdUsuario
         {
-            get { return this.idTarefa; }
-            set { this.idTarefa = value; }
+            get { return this.idUsuario; }
+            set { this.idUsuario = value; }
+        }
+
+        public TarefaId(Nullable<long> id, string nome, Nullable<DateTime> dataDaEntrega, string descricao, EstadoTarefa estado, Usuario usuario, Nullable<long> idUsuario)
+            :base(id,nome,dataDaEntrega,descricao,estado,usuario,idUsuario)
+        {
+            this.Id = id;
+            this.Nome = nome;
+            this.DataDaEntrega = dataDaEntrega;
+            this.Descricao = descricao;
+            this.Estado = estado;
+            this.Usuario = usuario;
+            this.idUsuario = idUsuario;
         }
 
         public TarefaId()
