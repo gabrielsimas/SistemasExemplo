@@ -29,46 +29,39 @@ namespace Aplicacao.Servico.Implementacao
         public void CadastrarTarefa(TarefaDto tarefa)
         {
             //Pega o Dto e converte para entidade
-            Tarefa tarefaDom = new Tarefa();
-            Montador.Montador.Monta(tarefa, tarefaDom);
-
+            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
             dominio.CadastrarTarefa(tarefaDom);
             dominio.CommitAlteracoes();
         }
 
         public void AlterarTarefa(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = new Tarefa();
-            Montador.Montador.Monta(tarefa, tarefaDom);
+            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
             dominio.AlterarTarefa(tarefaDom);
             dominio.CommitAlteracoes();
         }
 
         public void ApagarTarefa(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = new Tarefa();
-            Montador.Montador.Monta(tarefa,tarefaDom);
+            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
             dominio.ApagarTarefa(tarefaDom);
             dominio.CommitAlteracoes();
         }
 
         public void MarcarTarefaComoConcluida(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = new Tarefa();
-            Montador.Montador.Monta(tarefa,tarefaDom);
+            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
             dominio.MarcarTarefaComoConcluida(tarefaDom);
             dominio.CommitAlteracoes();
         }
 
         public TarefaDto BuscarTarefa(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = new Tarefa();            
-            Montador.Montador.Monta(tarefa,tarefaDom);
+            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
             tarefaDom = dominio.BuscarTarefa(tarefaDom);
             if (tarefaDom.Id.HasValue)
             {
-                TarefaDto dto = new TarefaDto();
-                Montador.Montador.Monta(tarefaDom,dto);
+                TarefaDto dto = Montador.Montador.Monta(tarefaDom);
                 return dto;
             }
             else
@@ -79,16 +72,13 @@ namespace Aplicacao.Servico.Implementacao
 
         public ICollection<TarefaDto> ListarTarefasNaoConcluidas(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = new Tarefa();
-            Montador.Montador.Monta(tarefa,tarefaDom);
+            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
 
             ICollection<Tarefa> tarefas = dominio.ListarTarefasNaoConcluidas(tarefaDom);
 
             if (tarefas != null && tarefas.Count > 0)
             {
-                ICollection<TarefaDto> dtos = new List<TarefaDto>();
-                Montador.Montador.Monta(tarefas,dtos);
-
+                ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
                 return dtos;
             }
             else
@@ -99,16 +89,13 @@ namespace Aplicacao.Servico.Implementacao
 
         public ICollection<TarefaDto> ListarTarefasAVencer(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = new Tarefa();
-            Montador.Montador.Monta(tarefa, tarefaDom);
+            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
 
             ICollection<Tarefa> tarefas = dominio.ListarTarefasAVencer(tarefaDom);
 
             if (tarefas != null && tarefas.Count > 0)
             {
-                ICollection<TarefaDto> dtos = new List<TarefaDto>();
-                Montador.Montador.Monta(tarefas, dtos);
-
+                ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
                 return dtos;
             }
             else
@@ -119,16 +106,13 @@ namespace Aplicacao.Servico.Implementacao
 
         public ICollection<TarefaDto> ListarTarefasConcluidas(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = new Tarefa();
-            Montador.Montador.Monta(tarefa, tarefaDom);
+            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
 
             ICollection<Tarefa> tarefas = dominio.ListarTarefasConcluidas(tarefaDom);
 
             if (tarefas != null && tarefas.Count > 0)
             {
-                ICollection<TarefaDto> dtos = new List<TarefaDto>();
-                Montador.Montador.Monta(tarefas, dtos);
-
+                ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
                 return dtos;
             }
             else
@@ -139,16 +123,13 @@ namespace Aplicacao.Servico.Implementacao
 
         public ICollection<TarefaDto> ListarTarefasConcluidasForaDoPrazo(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = new Tarefa();
-            Montador.Montador.Monta(tarefa, tarefaDom);
+            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
 
             ICollection<Tarefa> tarefas = dominio.ListarTarefasConcluidasForaDoPrazo(tarefaDom);
 
             if (tarefas != null && tarefas.Count > 0)
             {
-                ICollection<TarefaDto> dtos = new List<TarefaDto>();
-                Montador.Montador.Monta(tarefas, dtos);
-
+                ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
                 return dtos;
             }
             else
@@ -159,15 +140,13 @@ namespace Aplicacao.Servico.Implementacao
 
         public ICollection<TarefaDto> ListarTarefasAtrasadas(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = new Tarefa();
-            Montador.Montador.Monta(tarefa, tarefaDom);
+            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
 
             ICollection<Tarefa> tarefas = dominio.ListarTarefasAtrasadas(tarefaDom);
 
             if (tarefas != null && tarefas.Count > 0)
             {
-                ICollection<TarefaDto> dtos = new List<TarefaDto>();
-                Montador.Montador.Monta(tarefas, dtos);
+                ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
 
                 return dtos;
             }
@@ -179,15 +158,13 @@ namespace Aplicacao.Servico.Implementacao
 
         public ICollection<TarefaDto> ListarTarefasPorData(DateTime dataInicio, DateTime dataTermino, TarefaDto tarefa)
         {
-            Tarefa tarefaDom = new Tarefa();
-            Montador.Montador.Monta(tarefa, tarefaDom);
+            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
 
             ICollection<Tarefa> tarefas = dominio.ListarTarefasPorData(dataInicio,dataTermino,tarefaDom);
 
             if (tarefas != null && tarefas.Count > 0)
             {
-                ICollection<TarefaDto> dtos = new List<TarefaDto>();
-                Montador.Montador.Monta(tarefas, dtos);
+                ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
 
                 return dtos;
             }
@@ -199,15 +176,13 @@ namespace Aplicacao.Servico.Implementacao
 
         public ICollection<TarefaDto> ListarTodasAsTarefasDoUsuario(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = new Tarefa();
-            Montador.Montador.Monta(tarefa, tarefaDom);
+            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
 
             ICollection<Tarefa> tarefas = dominio.ListarTodasAsTarefasDoUsuario(tarefaDom);
 
             if (tarefas != null && tarefas.Count > 0)
             {
-                ICollection<TarefaDto> dtos = new List<TarefaDto>();
-                Montador.Montador.Monta(tarefas, dtos);
+                ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
 
                 return dtos;
             }

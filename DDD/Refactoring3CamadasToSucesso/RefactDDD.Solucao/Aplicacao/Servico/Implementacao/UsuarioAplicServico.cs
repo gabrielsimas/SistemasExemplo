@@ -2,6 +2,7 @@
 using Aplicacao.Servico.Fachada;
 using Dominio.Entidade;
 using Dominio.Servico.Interfaces;
+using Aplicacao.Montador;
 
 namespace Aplicacao.Servico.Implementacao
 {
@@ -24,19 +25,30 @@ namespace Aplicacao.Servico.Implementacao
         #region Métodos do Serviço de Aplicação
         public bool AutenticarUsuario(UsuarioDto usuario)
         {
-            Usuario usuarioDom = new Usuario();
-            Montador.Montador.Monta(usuario, usuarioDom);
+            Usuario usuarioDom = Montador.Montador.Monta(usuario);
             return dominio.AutenticarUsuario(usuarioDom);
         }
 
         public void CadastrarNovoUsuario(UsuarioDto usuario)
         {
-            Usuario usuarioDom = new Usuario();
-            Montador.Montador.Monta(usuario, usuarioDom);
+            Usuario usuarioDom = Montador.Montador.Monta(usuario);
             dominio.CadastrarNovoUsuario(usuarioDom);
             dominio.CommitAlteracoes();
         }
+        public UsuarioDto BuscarUsuarioPorLogin(UsuarioDto usuario)
+        {
+            Usuario usuarioDom = Montador.Montador.Monta(usuario);
+            Usuario resultado = dominio.BuscarUsuarioPorLogin(usuarioDom);
 
-        #endregion        
+            if(resultado != null)
+            {
+                return Montador.Montador.Monta(resultado);
+            }
+            else
+            {
+                return null;
+            }            
+        }
+        #endregion                    
     }
 }

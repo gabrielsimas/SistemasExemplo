@@ -11,5 +11,6 @@ namespace Aplicacao.Servico.Fachada
     {
         bool AutenticarUsuario(UsuarioDto usuario);
         void CadastrarNovoUsuario(UsuarioDto usuario);
+        UsuarioDto BuscarUsuarioPorLogin(UsuarioDto usuario);
     }
 }
