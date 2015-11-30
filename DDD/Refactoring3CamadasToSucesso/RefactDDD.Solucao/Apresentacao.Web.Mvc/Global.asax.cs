@@ -13,6 +13,13 @@ namespace Apresentacao.Web.Mvc
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            // Remove todos os View Engines
+            ViewEngines.Engines.Clear();
+
+            //Adiciona apenas o Engine do Razor
+            //ViewEngines.Engines.Add(new RazorViewEngine());
+
         }
     }
 }
