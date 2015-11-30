@@ -43,7 +43,7 @@ namespace Dominio.Entidade
 			this.descricao = descricao;
 			this.estado = estado;
 			this.usuario = usuario;
-            this.idUsuario = idUsuario;
+			this.idUsuario = idUsuario;
 		}
 		#endregion
 

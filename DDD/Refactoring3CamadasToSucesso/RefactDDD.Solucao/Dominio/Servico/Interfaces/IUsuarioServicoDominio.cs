@@ -9,9 +9,10 @@ using Infraestrutura.ORM.EF.Repositorio.Comum;
 
 namespace Dominio.Servico.Interfaces
 {
-    public interface IUsuarioServicoDominio : IUnitOfWork, IDisposable 
+    public interface IUsuarioServicoDominio : IUnitOfWork
     {
         bool AutenticarUsuario(Usuario usuario);
         void CadastrarNovoUsuario(Usuario usuario);
+        Usuario BuscarUsuarioPorLogin(Usuario usuario);
     }
 }

@@ -33,13 +33,26 @@ namespace Dominio.Servico.Implementacao
         {
             //Localiza o usuário pelo Login
             Usuario usuarioR = repositorio.FiltrarSimplesPor(u => u.Login.Equals(usuario.Login));
-            return usuarioR.Login.Equals(usuarioR.Login) && Cerberus.ValidaSenha(usuario.Senha,"SHA3",null);
+
+            if(usuarioR != null) 
+            {                
+                return usuarioR.Login.Equals(usuarioR.Login) && Cerberus.ValidaSenha(usuario.Senha, "SHA3", usuarioR.Senha);
+            }
+            else
+            {
+                throw new Exception(String.Format("Usuário {0} não localizado! Tente novamente!",usuario.Login));                
+            }            
         }
 
         public void CadastrarNovoUsuario(Usuario usuario)
         {
             usuario.Senha = Cerberus.GeraValorHash(usuario.Senha,"SHA3",null);
             repositorio.Criar(usuario);
+        }
+
+        public Usuario BuscarUsuarioPorLogin(Usuario usuario)
+        {
+            return repositorio.FiltrarSimplesPor(u => u.Login.Equals(usuario.Login));
         }
 
         public void CommitAlteracoes()
@@ -62,6 +75,6 @@ namespace Dominio.Servico.Implementacao
 
         }
 
-        #endregion                             
+        #endregion                                         
     }
 }
