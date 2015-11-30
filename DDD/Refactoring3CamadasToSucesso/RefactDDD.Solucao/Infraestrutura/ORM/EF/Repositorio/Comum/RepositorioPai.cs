@@ -11,7 +11,7 @@ namespace Infraestrutura.ORM.EF.Repositorio.Comum
     public class RepositorioPai<T,D>
         :IRepositorioPai<T>
         where T: class
-        where D: DbContext,IUnitOfWork,IDisposable
+        where D: DbContext,IUnitOfWork
     {
         #region Atributos
 

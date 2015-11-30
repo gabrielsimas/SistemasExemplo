@@ -17,9 +17,9 @@ namespace Infraestrutura.ORM.EF.Mapeamento
             HasKey(u => u.Id);
 
             Property(u => u.Id).HasColumnName("cod_usuario");
-            Property(u => u.Login).HasColumnName("login").HasMaxLength(10).IsRequired();
+            Property(u => u.Login).HasColumnName("login").HasMaxLength(20).IsRequired();
             Property(u => u.NomeCompleto).HasColumnName("nomecompleto").HasMaxLength(100).IsRequired();
-            Property(u => u.Senha).HasColumnName("senha").HasMaxLength(100).IsRequired();
+            Property(u => u.Senha).HasColumnName("senha").HasMaxLength(500).IsRequired();
             Property(u => u.Status).HasColumnName("estado");            
 
         }
