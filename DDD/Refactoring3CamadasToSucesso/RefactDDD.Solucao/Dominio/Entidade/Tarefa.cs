@@ -79,7 +79,7 @@ namespace Dominio.Entidade
 			set { this.estado = value; }
 		}
 		
-		public Nullable<long> IdUsuario
+		public virtual Nullable<long> IdUsuario
 		{
 			get { return this.idUsuario; }
 			set { this.idUsuario = value; }

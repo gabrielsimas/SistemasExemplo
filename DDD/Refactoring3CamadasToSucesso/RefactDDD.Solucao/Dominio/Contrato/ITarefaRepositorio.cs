@@ -10,6 +10,6 @@ namespace Dominio.Contrato
 {
     public interface ITarefaRepositorio: IRepositorioPai<Tarefa>
     {
-
+        void CadastrarNovaTarefa(Tarefa novaTarefa);
     }
 }

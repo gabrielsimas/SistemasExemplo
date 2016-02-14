@@ -30,14 +30,21 @@ namespace Dominio.Servico.Implementacao
 
         #region Métodos do Serviço de Domínio
 
+        /*
         public void CadastrarTarefa(Tarefa tarefa)
         {
             repositorio.Criar(tarefa);
         }
+         */
+
+        public void CadastrarTarefa(Tarefa tarefa)
+        {
+            repositorio.CadastrarNovaTarefa(tarefa);
+        }
 
         public void AlterarTarefa(Tarefa tarefa)
         {
-            Tarefa tarefaBd = repositorio.FiltrarSimplesPor(t => t.Id.Equals(tarefa.Id) && t.Usuario.Id.Equals(tarefa.Usuario.Id));
+            Tarefa tarefaBd = repositorio.FiltrarSimplesPor(t => t.Id.Equals(tarefa.Id) && t.Usuario.Id.Equals(tarefa.IdUsuario));
 
             if(tarefaBd.Id.HasValue)
             {
@@ -68,45 +75,117 @@ namespace Dominio.Servico.Implementacao
         }
 
         public ICollection<Tarefa> ListarTarefasNaoConcluidas(Tarefa tarefa)
-        {
-            Nullable<long> idUsuario = tarefa.Usuario.Id;
-            return repositorio.FiltrarCompostoPor(t=>t.Estado.Equals(EstadoTarefa.EmAberto) && t.Usuario.Id.Equals(idUsuario));
+        {            
+            if (tarefa.IdUsuario.HasValue)
+            {
+                Nullable<long> idUsuario = tarefa.IdUsuario.Value;
+
+                return repositorio.FiltrarCompostoPor(t => t.Estado.Equals(EstadoTarefa.EmAberto) && t.IdUsuario.Equals(idUsuario));
+            }
+            else
+            {
+                return null;
+            }         
         }
 
         public ICollection<Tarefa> ListarTarefasAVencer(Tarefa tarefa)
-        {
-            Nullable<long> idUsuario = tarefa.Usuario.Id;            
-            return repositorio.FiltrarCompostoPor(t => t.Estado.Equals(EstadoTarefa.EmAberto) && t.Usuario.Id.Equals(idUsuario) && t.DataDaEntrega > DateTime.Now);
+        {            
+            if (tarefa.IdUsuario.HasValue)
+            {
+                Nullable<long> idUsuario = tarefa.IdUsuario.Value;
+
+                return repositorio.FiltrarCompostoPor(t => t.Estado.Equals(EstadoTarefa.EmAberto) && t.IdUsuario.Equals(idUsuario) && t.DataDaEntrega > DateTime.Now);
+            }
+            else
+            {
+                return null;
+            }            
         }
 
         public ICollection<Tarefa> ListarTarefasConcluidas(Tarefa tarefa)
-        {            
-            Nullable<long> idUsuario = tarefa.Usuario.Id;
-            return repositorio.FiltrarCompostoPor(t => t.Estado.Equals(EstadoTarefa.Executada) && t.Usuario.Id.Equals(idUsuario));
+        {
+            if (tarefa.Usuario != null)
+            {
+                if (tarefa.IdUsuario.HasValue)
+                {
+                    Nullable<long> idUsuario = tarefa.IdUsuario.Value;
+
+                    return repositorio.FiltrarCompostoPor(t => t.Estado.Equals(EstadoTarefa.Executada) && t.IdUsuario.Equals(idUsuario));
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }                        
+                        
         }
 
         public ICollection<Tarefa> ListarTarefasConcluidasForaDoPrazo(Tarefa tarefa)
         {
-            Nullable<long> idUsuario = tarefa.Usuario.Id;
-            return repositorio.FiltrarCompostoPor(t => t.Estado.Equals(EstadoTarefa.Executada) && t.Usuario.Id.Equals(idUsuario) && DateTime.Now > t.DataDaEntrega);
+            if (tarefa.Usuario != null)
+            {
+                if (tarefa.IdUsuario.HasValue)
+                {
+                    Nullable<long> idUsuario = tarefa.IdUsuario.Value;
+
+                    return repositorio.FiltrarCompostoPor(t => t.Estado.Equals(EstadoTarefa.Executada) && t.IdUsuario.Equals(idUsuario) && DateTime.Now > t.DataDaEntrega);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }                                    
+            
         }
 
         public ICollection<Tarefa> ListarTarefasAtrasadas(Tarefa tarefa)
-        {
-            Nullable<long> idUsuario = tarefa.Usuario.Id;
-            return repositorio.FiltrarCompostoPor(t => t.Estado.Equals(EstadoTarefa.EmAberto) && DateTime.Now > t.DataDaEntrega && t.Usuario.Id.Equals(idUsuario));
+        {            
+            if (tarefa.IdUsuario.HasValue)
+            {
+                Nullable<long> idUsuario = tarefa.IdUsuario.Value;
+
+                return repositorio.FiltrarCompostoPor(t => t.Estado.Equals(EstadoTarefa.EmAberto) && DateTime.Now > t.DataDaEntrega && t.IdUsuario.Equals(idUsuario));
+            }
+            else
+            {
+                return null;
+            }            
         }
 
         public ICollection<Tarefa> ListarTarefasPorData(DateTime dataInicio, DateTime dataTermino, Tarefa tarefa)
         {            
-            Nullable<long> idUsuario = tarefa.Usuario.Id;
-            return repositorio.FiltrarCompostoPor(t => t.Usuario.Id.Equals(idUsuario) && (t.DataDaEntrega >= dataInicio && t.DataDaEntrega <= dataTermino));
+            if (tarefa.IdUsuario.HasValue)
+            {
+                Nullable<long> idUsuario = tarefa.IdUsuario.Value;
+
+                return repositorio.FiltrarCompostoPor(t => t.IdUsuario.Equals(idUsuario) && (t.DataDaEntrega >= dataInicio && t.DataDaEntrega <= dataTermino));
+            }
+            else
+            {
+                return null;
+            }         
         }
 
         public ICollection<Tarefa> ListarTodasAsTarefasDoUsuario(Tarefa tarefa)
-        {            
-            Nullable<long> idUsuario = tarefa.Usuario.Id;
-            return repositorio.FiltrarCompostoPor(t => t.Usuario.Id.Equals(idUsuario));
+        {                        
+            if (tarefa.IdUsuario.HasValue)
+            {
+                Nullable<long> idUsuario = tarefa.IdUsuario.Value;
+
+                return repositorio.FiltrarCompostoPor(t => t.IdUsuario.Equals(idUsuario));
+            }
+            else
+            {
+                return null;
+            }                        
         }
 
         public void CommitAlteracoes()
