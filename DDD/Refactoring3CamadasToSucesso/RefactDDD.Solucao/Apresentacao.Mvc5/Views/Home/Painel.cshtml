@@ -1,0 +1,313 @@
+﻿@model Apresentacao.Mvc5.Models.PainelDeTarefaModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sistema de Gest&atilde;o de Tarefas - Painel de Controle</title>
+    
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(
+            function () {
+
+                $("#btnCadastrarTarefa").click(
+                    function () {
+
+                        var TarefaCadastroModel = {
+                            Nome: $("#txtTarefa").val(),
+                            Descricao: $("#txtDescricao").val(),
+                            DataDaEntrega: $("#txtPrazo").val()
+                        };
+
+                        $.ajax(
+                            {
+                                type: "POST",
+                                url: "/Home/CadastrarTarefa",
+                                data: JSON.stringify(TarefaCadastroModel),
+                                contentType: "application/json",
+                                dataType: "html",
+                                success: function (msg) {
+                                    $("#msg").html(msg);
+                                },
+                                error: function (e) {
+                                    $("#msg").html("Erro: " + e.status);
+                                }
+                            }
+                        );
+                    }
+                );                
+            }
+        );
+    </script>
+</head>
+<body>
+    <div class="container">        
+        <form class="form-horizontal" role="form" id="formPainelDeControle">
+            <fieldset>
+                <legend>Painel de Tarefas do Usuário</legend>
+            </fieldset>
+            <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#CadastroDeTarefaModal">Cadastrar Nova Tarefa</button>
+            <br />
+            <br />
+            <div class="panel panel-default" id="pnlTodasAsTarefas">
+                <div class="panel-heading"><label>Todas as Tarefas do Usuário</label></div>
+                <div class="panel-body">
+                @if(Model.TodasAsTarefas != null && Model.TodasAsTarefas.Count > 0 )
+                {
+                    <div class="table-responsive" title="Grade de Tarefas">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td>Id</td>
+                                    <td>Tarefa</td>
+                                    <td>Descri&ccedil;&atilde;o</td>
+                                    <td>Prazo</td>
+                                    <td>Estado</td>
+                                    <td>Opera&ccedil;&otilde;es</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var todasAsTarefas in Model.TodasAsTarefas)
+                                {
+                                    if (todasAsTarefas.DataDaEntrega >= DateTime.Now)
+                                    {
+                                        ViewBag.trCssClass = "success";
+                                    }
+                                    else
+                                    {
+                                        ViewBag.trCssClass = "danger";
+                                    }
+                                    <tr class="@ViewBag.trCssClass">
+
+                                        <td>@todasAsTarefas.Id</td>
+                                        <td>@todasAsTarefas.Nome</td>
+                                        <td>@todasAsTarefas.Descricao</td>
+                                        <td>@todasAsTarefas.DataDaEntrega</td>
+                                        <td>
+                                            @if (todasAsTarefas.Estado == Apresentacao.Mvc5.Models.EstadoTarefaModel.EmAberto)
+                                            {
+                                                <p>Em Aberto</p>
+                                            }
+                                            else
+                                            {
+                                                <p>Executada</p>
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (todasAsTarefas.Estado == Apresentacao.Mvc5.Models.EstadoTarefaModel.EmAberto)
+                                            {
+                                                @Html.ActionLink("Executar Tarefa", "Executar", new { idTarefa = todasAsTarefas.Id.Value }, new { @class = "btn btn-success" })
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>                            
+                        </table>
+                        
+                    </div>
+                }else{
+                   <p>N&atilde;o existem tarefas cadastradas para esse usu&aacute;rio!</p>
+                }
+                </div> <!-- class="panel-body" -->
+              
+            </div> <!-- pnlTodasAsTarefas -->
+            <div class="panel panel-warning" id="pnlTarefasAVencer">
+                <div class="panel-heading" id="pnlTarefasAVencerHeader">
+                    <a data-toggle="collapse" href="#toggle01">Tarefas à Vencer</a>
+                </div>
+                <div id="toggle01" class="panel-collapse collapse">
+                    <div class="panel-body" id="pnlTarefasAVencerBody">
+                    @if(Model.TarefasAVencer != null && Model.TarefasAVencer.Count > 0 )
+                    {
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead >
+                                    <tr class="warning">
+                                        <td>Id</td>
+                                        <td>Tarefa</td>
+                                        <td>Descri&ccedil;&atilde;o</td>
+                                        <td>Prazo</td>
+                                        <td>Estado</td>                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var linha in Model.TarefasAVencer)
+                                    {
+                                        <tr class="warning">
+                                            <td>@linha.Id</td>
+                                            <td>@linha.Nome</td>
+                                            <td>@linha.Descricao</td>
+                                            <td>@linha.DataDaEntrega</td>
+                                            <td>
+                                                @if (linha.Estado == Apresentacao.Mvc5.Models.EstadoTarefaModel.EmAberto)
+                                                {
+                                                    <p>Em Aberto</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>Executada</p>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div><!-- Table Responsive -->
+                    } else {
+                        <p>N&atilde;o existem tarefas cadastradas para esse usu&aacute;rio!</p>
+                    }
+                    </div> <!-- pnlTarefasAVencerBody -->
+                </div>
+            </div>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <a data-toggle="collapse" href="#toggle02">Tarefas Vencidas</a>
+                </div>
+                <div id="toggle02" class="panel-collapse collapse">
+                    <div class="panel-body" id="pnlTarefasVencidasBody">
+                    @if(Model.TarefasVencidas != null && Model.TarefasVencidas.Count > 0 )
+                    {
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <td>Id</td>
+                                        <td>Tarefa</td>
+                                        <td>Descri&ccedil;&atilde;o</td>
+                                        <td>Prazo</td>
+                                        <td>Estado</td>                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var linha in Model.TarefasVencidas)
+                                    {
+                                        <tr class="danger">
+                                            <td>@linha.Id</td>
+                                            <td>@linha.Nome</td>
+                                            <td>@linha.Descricao</td>
+                                            <td>@linha.DataDaEntrega</td>
+                                            <td>
+                                                @if (linha.Estado == Apresentacao.Mvc5.Models.EstadoTarefaModel.EmAberto)
+                                                {
+                                                    <p>Em Aberto</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>Executada</p>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div> <!-- table-responsive -->
+                    }else {
+                        <p>N&atilde;o existem tarefas cadastradas para esse usu&aacute;rio!</p>
+                    }
+                    </div> <!-- pnlTarefasVencidasBody -->
+                </div> <!-- Toggle02-->
+            </div> <!-- panel panel-danger -->
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <a data-toggle="collapse" href="#toggle03">Tarefas Executadas</a>
+                </div>
+                <div id="toggle03" class="panel-collapse collapse">
+                    <div class="panel-body" id="pnlTarefasExecutadas">
+                    @if(Model.TarefasExecutadas != null && Model.TarefasExecutadas.Count > 0 )
+                    {
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <td>Id</td>
+                                        <td>Tarefa</td>
+                                        <td>Descri&ccedil;&atilde;o</td>
+                                        <td>Prazo</td>
+                                        <td>Estado</td>
+                                        <td>Opera&ccedil;&otilde;es</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var linha in Model.TarefasExecutadas)
+                                    {
+                                        <tr class="danger">
+                                            <td>@linha.Id</td>
+                                            <td>@linha.Nome</td>
+                                            <td>@linha.Descricao</td>
+                                            <td>@linha.DataDaEntrega</td>
+                                            <td>
+                                                @if (linha.Estado == Apresentacao.Mvc5.Models.EstadoTarefaModel.EmAberto)
+                                                {
+                                                    <p>Em Aberto</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>Executada</p>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div> <!-- table-responsive -->
+                    }else {
+                        <p>N&atilde;o existem tarefas cadastradas para esse usu&aacute;rio!</p>
+                    }
+                    </div><!-- pnlTarefasExecutadas -->
+                </div><!-- toggle03 -->
+            </div> <!--panel panel-success-->
+
+                            <!-- Modal -->
+                            <div id="CadastroDeTarefaModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                <span class="glyphicon glyphicon-off" />
+                                            </button>
+                                            <h4 class="modal-title">Cadastro de Tarefas</h4>
+                                        </div><!-- modal-header -->
+                                        <div class="modal-body">
+                                            <div class="panel-default">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-2" id="lblTarefa">Tarefa:</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" id="txtTarefa" placeholder="Entre com o nome da Tarefa" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label id="lblDescricao" class="control-label col-md-2">Descri&ccedil;&atilde;o:</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" id="txtDescricao" placeholder="Entre com a descri&ccedil;&atilde;o" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-2" id="lblPrazo">Prazo:</label>
+                                                    <div class="col-md-10">
+                                                        <input type="date" class="form-control" id="txtPrazo" placeholder="Entre com a data para execu&ccedil;&atilde;o" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="button" id="btnCadastrarTarefa" value="Cadastrar Tarefa" class="btn btn-primary" />
+                                                    <br />
+                                                    <strong><span id="msg"></span></strong>
+                                                </div>
+                                            </div><!-- panel-default -->
+                                        </div> <!-- modal-header -->
+                                    </div> <!-- modal-content -->
+                                </div>  <!-- modal-dialog -->
+                            </div> <!-- CadastroDeTarefaModal -->
+        </form>
+    </div> <!-- Container -->
+</body>
+</html>

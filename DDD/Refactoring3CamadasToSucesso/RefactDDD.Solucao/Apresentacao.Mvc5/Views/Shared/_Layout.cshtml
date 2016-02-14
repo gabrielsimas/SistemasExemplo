@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    @RenderSection("javascript", required: false)
+
+</head>
+<body>
+    <div>
+        <div class="container">
+
+            <h3>Projeto Controle de Tarefas</h3>
+            <hr />
+
+            @RenderBody()
+
+        </div>
+    </div>
+</body>
+</html>

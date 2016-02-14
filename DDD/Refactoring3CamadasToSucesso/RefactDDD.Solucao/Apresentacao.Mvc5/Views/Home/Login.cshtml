@@ -1,0 +1,120 @@
+﻿@model Apresentacao.Mvc5.Models.AutenticacaoModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using(Html.BeginForm("Autenticar", "Home", FormMethod.Post, new {@class="form-signin" }))
+{    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <h2 class="form-signin-heading">Login</h2>
+    
+    @Html.LabelFor(model => model.Login, new { @class = "sr-only" })
+    @Html.TextBoxFor(model => model.Login, new { id="loginUsuario",@class="form-control",placeholder="Entre com o Login do Usuário",required="required",autofocus="autofocus"})
+    
+    @Html.LabelFor(model => model.Senha, new { @class="sr-only"})
+    @Html.TextBoxFor(model => model.Senha, new { id = "loginUsuario", @class = "form-control", placeholder = "Entre com a senha",type="password",required="required" })
+        
+    <button id="btnAutenticar" class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+}
+<!--
+<form class="form-signin">
+    <h2 class="form-signin-heading">Login</h2>
+    <label for="login" class="sr-only">Login</label>
+    <input type="text" id="loginUsuario" class="form-control" placeholder="Entre com o Login do Usuário" required autofocus>
+
+    <label for="senha" class="sr-only">Senha</label>
+    <input type="password" id="senhaUsuario" class="form-control" placeholder="Entre com a senha" required>
+        
+    <button id="btnAutenticar" class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+</form>
+-->
+<div>
+    @ViewBag.Mensagem
+</div>
+
+<div>
+    Para criar uma conta de usuário
+    <a href="#" data-target="#janela" data-toggle="modal">Clique aqui</a>
+</div>
+
+<!-- Janela modal -->
+<div id="janela" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header bg-primary">
+                <h3>Cadastro de Usuários</h3>
+            </div>
+            <div class="modal-body">
+
+                <label>Nome do Usuario:</label>
+                <input type="text" id="nome" placeholder="Entre o nome" class="form-control" />
+                <br />
+
+                <label>Login de Acesso:</label>
+                <input type="text" id="usuario" placeholder="Entre o Login do usuário" class="form-control" />
+                <br />
+
+                <label>Senha:</label>
+                <input type="password" id="senha" placeholder="Entre a senha" class="form-control" />
+                <br />
+
+                <label>Confirme sua Senha:</label>
+                <input type="password" id="senhadenovo" placeholder="Confirme a senha digitada acima" class="form-control" />
+                <br />
+
+            </div>
+            <div class="modal-footer">
+
+                <input type="button" id="btncadastrar"
+                       value="Criar Conta de Usuario" class="btn btn-primary" />
+
+                <input type="button" value="Cancelar" class="btn btn-danger" data-dismiss="modal" />
+                <br /><br />
+                <strong> <span id="msg"></span> </strong>
+                <strong><span id="msg2">@ViewBag.MensagemCriacaoUsuario</span></strong>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section javascript{
+
+    <script type="text/javascript">
+        $(document).ready(
+            function () {
+
+                $("#btncadastrar").click(
+                    function () {                        
+
+                        var CadastroUsuarioModel = {
+                            NomeCompleto: $("#nome").val(),
+                            Login: $("#usuario").val(),
+                            Senha: $("#senha").val()
+                        };
+
+                        $.ajax(
+                            {
+                                type: "POST",
+                                url: "/Home/CadastrarNovoUsuario",
+                                data: JSON.stringify(CadastroUsuarioModel),
+                                contentType: "application/json",
+                                dataType:"html",
+                                success: function (msg) {
+                                    $("#msg").html(msg);
+                                },
+                                error: function (e) {
+                                    $("#msg").html("Erro: " + e.status);
+                                }
+                            }
+                        );
+                    }
+                );                
+            }
+        );
+    </script>
+
+}
+
