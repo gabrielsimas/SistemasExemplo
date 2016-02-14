@@ -125,7 +125,7 @@ namespace Apresentacao.Web.Mvc.Controllers
 				}
 				else
 				{
-                    HttpContext.Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+					HttpContext.Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
 
 					IList<String> erros = new List<String>();
 					foreach (ModelState modelState in ViewData.ModelState.Values)
@@ -136,7 +136,7 @@ namespace Apresentacao.Web.Mvc.Controllers
 						}
 					}
 
-                    throw new ExcecaoTarefa(Json(erros,"application/json",Encoding.UTF8).ToString());
+					throw new ExcecaoTarefa(Json(erros,"application/json",Encoding.UTF8).ToString());
 				}
 			}
 			catch (ExcecaoTarefa et)
@@ -164,7 +164,7 @@ namespace Apresentacao.Web.Mvc.Controllers
 				}
 				else
 				{
-                    HttpContext.Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+					HttpContext.Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
 
 					IList<String> erros = new List<String>();
 					foreach (ModelState modelState in ViewData.ModelState.Values)
@@ -175,7 +175,7 @@ namespace Apresentacao.Web.Mvc.Controllers
 						}
 					}
 
-                    throw new ExcecaoTarefa(Json(erros,"application/json",Encoding.UTF8).ToString());
+					throw new ExcecaoTarefa(Json(erros,"application/json",Encoding.UTF8).ToString());
 				}
 			}
 			catch (ExcecaoTarefa et)
@@ -216,7 +216,7 @@ namespace Apresentacao.Web.Mvc.Controllers
 				}
 				else
 				{
-                    return null;
+					return null;
 				}
 			}
 			catch (ExcecaoTarefa et)
@@ -235,26 +235,26 @@ namespace Apresentacao.Web.Mvc.Controllers
 		{
 			try
 			{
-                TarefaDto dto = new TarefaDto()
-                {
-                    Usuario = new UsuarioDto()
-                    {
-                        Id = idUsuario
-                    }
-                };
+				TarefaDto dto = new TarefaDto()
+				{
+					Usuario = new UsuarioDto()
+					{
+						Id = idUsuario
+					}
+				};
 
-                ICollection<TarefaDto> dtos = tarefaAplicacaoServico.ListarTarefasConcluidas(dto);
+				ICollection<TarefaDto> dtos = tarefaAplicacaoServico.ListarTarefasConcluidas(dto);
 
-                if (dtos != null && dtos.Count > 0)
-                {
-                    ICollection<TarefaListarModel> models = Montador.MontaModeloDominioEViceVersa.Monta(dtos);
+				if (dtos != null && dtos.Count > 0)
+				{
+					ICollection<TarefaListarModel> models = Montador.MontaModeloDominioEViceVersa.Monta(dtos);
 
-                    return Json(new { TarefaModel = dtos }, "application/json", Encoding.UTF8);
-                }
-                else
-                {
-                    return null;
-                }
+					return Json(new { TarefaModel = dtos }, "application/json", Encoding.UTF8);
+				}
+				else
+				{
+					return null;
+				}
 			}
 			catch (ExcecaoTarefa et)
 			{
@@ -273,26 +273,26 @@ namespace Apresentacao.Web.Mvc.Controllers
 		{
 			try
 			{
-                TarefaDto dto = new TarefaDto()
-                {
-                    Usuario = new UsuarioDto()
-                    {
-                        Id = idUsuario
-                    }
-                };
+				TarefaDto dto = new TarefaDto()
+				{
+					Usuario = new UsuarioDto()
+					{
+						Id = idUsuario
+					}
+				};
 
-                ICollection<TarefaDto> dtos = tarefaAplicacaoServico.ListarTarefasAtrasadas(dto);
+				ICollection<TarefaDto> dtos = tarefaAplicacaoServico.ListarTarefasAtrasadas(dto);
 
-                if (dtos != null && dtos.Count > 0)
-                {
-                    ICollection<TarefaListarModel> models = Montador.MontaModeloDominioEViceVersa.Monta(dtos);
+				if (dtos != null && dtos.Count > 0)
+				{
+					ICollection<TarefaListarModel> models = Montador.MontaModeloDominioEViceVersa.Monta(dtos);
 
-                    return Json(new { TarefaModel = dtos }, "application/json", Encoding.UTF8);
-                }
-                else
-                {
-                    return null;
-                }
+					return Json(new { TarefaModel = dtos }, "application/json", Encoding.UTF8);
+				}
+				else
+				{
+					return null;
+				}
 			}
 			catch (ExcecaoTarefa et)
 			{
@@ -310,26 +310,26 @@ namespace Apresentacao.Web.Mvc.Controllers
 		{
 			try
 			{
-                TarefaDto dto = new TarefaDto()
-                {
-                    Usuario = new UsuarioDto()
-                    {
-                        Id = idUsuario
-                    }
-                };
+				TarefaDto dto = new TarefaDto()
+				{
+					Usuario = new UsuarioDto()
+					{
+						Id = idUsuario
+					}
+				};
 
-                ICollection<TarefaDto> dtos = tarefaAplicacaoServico.ListarTarefasAVencer(dto);
+				ICollection<TarefaDto> dtos = tarefaAplicacaoServico.ListarTarefasAVencer(dto);
 
-                if (dtos != null && dtos.Count > 0)
-                {
-                    ICollection<TarefaListarModel> models = Montador.MontaModeloDominioEViceVersa.Monta(dtos);
+				if (dtos != null && dtos.Count > 0)
+				{
+					ICollection<TarefaListarModel> models = Montador.MontaModeloDominioEViceVersa.Monta(dtos);
 
-                    return Json(new { TarefaModel = dtos }, "application/json", Encoding.UTF8);
-                }
-                else
-                {
-                    return null;
-                }
+					return Json(new { TarefaModel = dtos }, "application/json", Encoding.UTF8);
+				}
+				else
+				{
+					return null;
+				}
 			}
 			catch (ExcecaoTarefa et)
 			{

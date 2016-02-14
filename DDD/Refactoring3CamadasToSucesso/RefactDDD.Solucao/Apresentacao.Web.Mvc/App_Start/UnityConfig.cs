@@ -6,7 +6,7 @@ using Microsoft.Practices.Unity.Configuration;
 namespace Apresentacao.Web.Mvc.App_Start
 {
     /// <summary>
-    /// Specifies the Unity configuration for the main container.
+    /// Especifica a configuração do Unity para o container principal.
     /// </summary>
     public class UnityConfig
     {
@@ -19,7 +19,7 @@ namespace Apresentacao.Web.Mvc.App_Start
         });
 
         /// <summary>
-        /// Gets the configured Unity container.
+        /// Pega o container do Unity já configurado.
         /// </summary>
         public static IUnityContainer GetConfiguredContainer()
         {
@@ -27,6 +27,10 @@ namespace Apresentacao.Web.Mvc.App_Start
         }
         #endregion
         
+       /// <summary>
+       /// Inicializa o Container existente na Camada de infraestrutura
+       /// </summary>
+       /// <param name="container">objeto do tipo IUnityContainer instanciado com o container</param>
         public static void RegisterTypes(IUnityContainer container)
         {
             ContainerDoUnity.InicializaContainer(container);
