@@ -113,25 +113,25 @@
                     </div>
                     <div id="toggle03" class="panel-collapse collapse">
                         <div class="panel-body" id="pnlTarefasExecutadas">
-                        <div class="table-responsive">
-                            <asp:GridView ID="gridTarefasExecutadas" runat="server"
-                            AutoGenerateColumns="false" EmptyDataText="Não existem Tarefas executadas."  
-                            OnRowDataBound="gridTarefasExecutadas_RowDataBound"                                                      
-                            CssClass="table" RowStyle-CssClass="success" GridLines="None">
-                            <Columns>
-                                <asp:BoundField DataField="Id" HeaderText="Id" />
-                                <asp:BoundField DataField="Nome" HeaderText="Tarefa"/>
-                                <asp:BoundField DataField="Descricao" HeaderText="Descri&ccedil;&atilde;o"/>
-                                <asp:BoundField DataField="DataDeEntrega" DataFormatString="{0:d}" HeaderText="Prazo"/>                                
-                                <asp:TemplateField HeaderText="Estado">
-                                    <ItemTemplate>
-                                        <asp:Label runat="server" ID="lblEstado04" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>                                                                 
-                            </Columns>
-                        </asp:GridView>
-                        </div>
-                    </div>
+							<div class="table-responsive">
+								<asp:GridView ID="gridTarefasExecutadas" runat="server"
+								AutoGenerateColumns="false" EmptyDataText="Não existem Tarefas executadas."  
+								OnRowDataBound="gridTarefasExecutadas_RowDataBound"                                                      
+								CssClass="table" RowStyle-CssClass="success" GridLines="None">
+								<Columns>
+									<asp:BoundField DataField="Id" HeaderText="Id" />
+									<asp:BoundField DataField="Nome" HeaderText="Tarefa"/>
+									<asp:BoundField DataField="Descricao" HeaderText="Descri&ccedil;&atilde;o"/>
+									<asp:BoundField DataField="DataDeEntrega" DataFormatString="{0:d}" HeaderText="Prazo"/>                                
+									<asp:TemplateField HeaderText="Estado">
+										<ItemTemplate>
+											<asp:Label runat="server" ID="lblEstado04" />
+										</ItemTemplate>
+									</asp:TemplateField>                                                                 
+								</Columns>
+							</asp:GridView>
+							</div>
+					    </div>
                     </div>
                 </div>
                 <!-- Modal -->

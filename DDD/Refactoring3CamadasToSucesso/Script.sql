@@ -59,3 +59,39 @@ ALTER TABLE TB_TAREFA
 		([nomecompleto], [login], [senha], [estado])
 	VALUES
 	('Livia Helena Barcia Simas','lhelena','jOlLImeT2ebU+Y5BQTXlqFiszBEyiYFYMYRhNnXaOfj6YnKYeBcvdNVO+1KzD0I+Q6pMAopPe89C8EbsjNQP8m8bWO6gyyGWKPCxuKnbvDuHcL5PcNq3SR7TrEE=',1)
+
+SELECT * FROM TB_TAREFA	
+
+insert into TB_TAREFA
+VALUES
+(9,'Pagar a Conta de Telefone',GETDATE()+1,'Pagar a Conta de Telefone no prazo',0)
+
+insert into TB_TAREFA
+VALUES
+(9,'Pagar a Conta de luz','2016-02-10 12:53:40.110','Pagar a Conta de Telefone no prazo',0)
+
+USE sgt
+GO
+
+SELECT * FROM TB_USUARIO
+
+SELECT * FROM TB_TAREFA
+
+SELECT * FROM TB_TAREFA
+WHERE cod_usuario = 9
+
+DELETE FROM TB_USUARIO
+WHERE cod_usuario = 11
+
+UPDATE TB_TAREFA
+SET cod_usuario = 9
+WHERE cod_tarefa = 10
+
+SELECT * FROM TB_TAREFA
+WHERE Cod_usuario = 9
+and estado = 0
+AND dataentrega > getdate()
+
+SELECT * FROM TB_TAREFA
+GO
+
