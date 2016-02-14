@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html ng-app="tarefaAdm">
+<head>
+    <title></title>
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>    
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/angular-resource.min.js"></script>    
+    <script src="app.js"></script>
+    <script src="Servicos/servicos.js"></script>
+    <script src="Controllers/tarefa-controller.js"></script>
+
+</head>
+<body class="container">
+    <h3>Projeto Controle de Tarefas</h3>
+    <ul>
+        <li> <a href="#tarefa/cadastro">Cadastrar nova tarefa</a> </li>
+        <li> <a href="#tarefa/lista">Listar Tarefas Cadastradas</a> </li>
+    </ul>
+    <hr />
+
+    <div ng-view>
+    </div>
+</body>
+</html>

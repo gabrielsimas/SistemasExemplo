@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h3>it Works!!!!</h3>
+    <table class="table table-hover" ng-init="Listar()">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome do Produto</th>
+                <th>Data de Entrega</th>
+                <th>Descrição</th>
+                <th>Estado</th>                
+                <th>Operações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="t in Tarefas">
+                <td> {{t.Id}} </td>
+                <td> {{t.Nome}} </td>
+                <td> {{t.DataDaEntrega | date:'dd/MM/yyyy'}} </td>
+                <td> {{t.Descricao}} </td>
+                <td> {{t.Estado}} </td>                
+                <td>
+                    <!--
+                    <button class="btn btn-primary btn-sm"
+                            ng-click="AbrirRegistro(p.Id)"
+                            data-target="#janela" data-toggle="modal">
+                        Abrir Registro
+                    </button>
+
+                    <button class="btn btn-danger btn-sm"
+                            ng-click="Excluir(p.Id)">
+                        Excluir
+                    </button>
+                        -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
