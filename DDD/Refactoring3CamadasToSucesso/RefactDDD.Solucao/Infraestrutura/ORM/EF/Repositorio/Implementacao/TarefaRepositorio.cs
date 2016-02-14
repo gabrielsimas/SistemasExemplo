@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,14 @@ namespace Infraestrutura.ORM.EF.Repositorio.Implementacao
             :base(conexao)
         {
 
+        }
+
+        public void CadastrarNovaTarefa(Tarefa novaTarefa)
+        {
+            //Conexao.ChangeTracker.Entries<Usuario>().ToList().ForEach(p => p.State = EntityState.Unchanged); 
+
+            Conexao.Entry(novaTarefa).State = EntityState.Added;
+                      
         }
     }
 }

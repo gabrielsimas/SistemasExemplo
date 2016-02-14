@@ -16,6 +16,18 @@ namespace Infraestrutura.ORM.EF.Repositorio.Comum
         #region Atributos
 
         private D conexao;
+        public D Conexao
+        {
+            get
+            {
+                return conexao;
+            }
+
+            set
+            {
+                conexao = value;
+            }
+        }
 
         #endregion
 

@@ -37,6 +37,9 @@ namespace Infraestrutura.ORM.EF.ContextoDB
 
             modelBuilder.Configurations.Add(new UsuarioMapeamento());
             modelBuilder.Configurations.Add(new TarefaMapeamento());
+
+            //this.Configuration.LazyLoadingEnabled = false;
+            //this.Configuration.ProxyCreationEnabled = false;
         }
         #endregion
 
