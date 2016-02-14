@@ -33,6 +33,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.4.2.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Sgtv2.Ddd.Dominio">
       <HintPath>..\bin\Sgtv2.Ddd.Dominio.dll</HintPath>
     </Reference>
@@ -59,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Dto\TarefaDto.cs" />
     <Compile Include="Dto\UsuarioDto.cs" />
+    <Compile Include="Mappers\AutoMapperConfigFactory.cs" />
+    <Compile Include="Mappers\PerfilEntidadeParaDtoEViceVersa.cs" />
     <Compile Include="Montador\Montador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servico\Fachada\ITarefaAplicServico.cs" />

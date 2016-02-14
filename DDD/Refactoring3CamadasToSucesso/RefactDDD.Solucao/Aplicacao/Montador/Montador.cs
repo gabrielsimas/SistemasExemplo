@@ -22,14 +22,14 @@ namespace Aplicacao.Montador
             {
                 Tarefa entidade = new Tarefa()
                 {
-                    DataDaEntrega = dto.DataDaEntrega,
+                    DataDaEntrega = dto.DataDaEntrega.HasValue ? dto.DataDaEntrega.Value : dto.DataDaEntrega = null,
                     Descricao = dto.Descricao,
                     Estado = (Dominio.Entidade.EstadoTarefa)dto.Estado,
                     Id = dto.Id,
                     IdUsuario = dto.Usuario.Id,
                     Nome = dto.Nome
-                };
-
+                };            
+                
                 return entidade;
             }
             else

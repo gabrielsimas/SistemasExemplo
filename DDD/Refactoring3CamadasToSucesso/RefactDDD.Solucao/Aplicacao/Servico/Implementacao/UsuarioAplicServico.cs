@@ -3,6 +3,8 @@ using Aplicacao.Servico.Fachada;
 using Dominio.Entidade;
 using Dominio.Servico.Interfaces;
 using Aplicacao.Montador;
+using AutoMapper;
+using Aplicacao.Mappers;
 
 namespace Aplicacao.Servico.Implementacao
 {
@@ -11,6 +13,7 @@ namespace Aplicacao.Servico.Implementacao
         #region Atributos
 
         private IUsuarioServicoDominio dominio;
+        private IMapper mapper;
 
         #endregion
 
@@ -18,27 +21,27 @@ namespace Aplicacao.Servico.Implementacao
         public UsuarioAplicServico(IUsuarioServicoDominio dominio)
         {
             this.dominio = dominio;
+            this.mapper = AutoMapperConfigFactory.GetMapper();
         }
 
         #endregion
 
         #region Métodos do Serviço de Aplicação
         public bool AutenticarUsuario(UsuarioDto usuario)
-        {
-            Usuario usuarioDom = Montador.Montador.Monta(usuario);
-            return dominio.AutenticarUsuario(usuarioDom);
+        {                        
+            return dominio.AutenticarUsuario(mapper.Map<Usuario>(usuario));
         }
 
         public void CadastrarNovoUsuario(UsuarioDto usuario)
         {
-            Usuario usuarioDom = Montador.Montador.Monta(usuario);
-            dominio.CadastrarNovoUsuario(usuarioDom);
+            //Usuario usuarioDom = Montador.Montador.Monta(usuario);
+            dominio.CadastrarNovoUsuario(mapper.Map<Usuario>(usuario));
             dominio.CommitAlteracoes();
         }
         public UsuarioDto BuscarUsuarioPorLogin(UsuarioDto usuario)
         {
-            Usuario usuarioDom = Montador.Montador.Monta(usuario);
-            Usuario resultado = dominio.BuscarUsuarioPorLogin(usuarioDom);
+            //Usuario usuarioDom = Montador.Montador.Monta(usuario);
+            Usuario resultado = dominio.BuscarUsuarioPorLogin(mapper.Map<Usuario>(usuario));
 
             if(resultado != null)
             {

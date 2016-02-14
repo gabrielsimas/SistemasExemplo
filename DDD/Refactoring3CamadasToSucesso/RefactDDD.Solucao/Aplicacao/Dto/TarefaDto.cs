@@ -19,6 +19,7 @@ namespace Aplicacao.Dto
       public Nullable<DateTime> DataDaEntrega { get; set; }
       public string Descricao { get; set; }
       public EstadoTarefa Estado { get; set; }
+      public Nullable<long> IdUsuario { get; set; }
       public UsuarioDto Usuario {get; set;}      
   }
 }

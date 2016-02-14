@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Aplicacao.Dto;
+using Aplicacao.Mappers;
 using Aplicacao.Servico.Fachada;
+using AutoMapper;
 using Dominio.Entidade;
 using Dominio.Servico.Interfaces;
 
@@ -15,6 +17,7 @@ namespace Aplicacao.Servico.Implementacao
         #region Atributos
 
         private ITarefaServicoDominio dominio;
+        private IMapper mapper;
 
         #endregion
 
@@ -22,6 +25,7 @@ namespace Aplicacao.Servico.Implementacao
         public TarefaAplicServico(ITarefaServicoDominio dominio)
         {
             this.dominio = dominio;
+            this.mapper = AutoMapperConfigFactory.GetMapper();
         }
         #endregion
 
@@ -29,40 +33,77 @@ namespace Aplicacao.Servico.Implementacao
         public void CadastrarTarefa(TarefaDto tarefa)
         {
             //Pega o Dto e converte para entidade
-            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
-            dominio.CadastrarTarefa(tarefaDom);
-            dominio.CommitAlteracoes();
+
+            if (tarefa != null)
+            {
+                //Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
+                dominio.CadastrarTarefa(mapper.Map<Tarefa>(tarefa));
+                dominio.CommitAlteracoes();
+            }
+            else
+            {
+                throw new ArgumentNullException("Tarefa vazia. Não podemos cadastrar objetos vazios.");
+            }
+
+            
         }
 
         public void AlterarTarefa(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
-            dominio.AlterarTarefa(tarefaDom);
-            dominio.CommitAlteracoes();
+            if (tarefa != null)
+            {
+                //Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
+                dominio.AlterarTarefa(mapper.Map<Tarefa>(tarefa));
+                dominio.CommitAlteracoes();
+            }
+            else
+            {
+                throw new ArgumentNullException("Tarefa vazia. Não podemos alterar objetos vazios.");
+            }
+            
         }
 
         public void ApagarTarefa(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
-            dominio.ApagarTarefa(tarefaDom);
-            dominio.CommitAlteracoes();
+            if (tarefa != null || !tarefa.Id.HasValue)
+            {
+                //Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
+                dominio.ApagarTarefa(mapper.Map<Tarefa>(tarefa));
+                dominio.CommitAlteracoes();
+            }
+            else
+            {
+                throw new ArgumentNullException("Tarefa vazia. Não podemos excluir objetos vazios.");
+            }
+            
         }
 
         public void MarcarTarefaComoConcluida(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
-            dominio.MarcarTarefaComoConcluida(tarefaDom);
-            dominio.CommitAlteracoes();
+            if (tarefa != null || !tarefa.Id.HasValue)
+            {
+                //Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
+                dominio.MarcarTarefaComoConcluida(mapper.Map<Tarefa>(tarefa));
+                dominio.CommitAlteracoes();
+            }
+            else
+            {
+                throw new ArgumentNullException("Tarefa vazia. Não podemos marcar tarefas que não existem.");
+            }
+            
         }
 
         public TarefaDto BuscarTarefa(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
-            tarefaDom = dominio.BuscarTarefa(tarefaDom);
+            
+            Tarefa tarefaDom = new Tarefa();                        
+
+            //tarefaDom = mapper.Map<Tarefa>(tarefa);
+            tarefaDom = dominio.BuscarTarefa(mapper.Map<Tarefa>(tarefa));
+
             if (tarefaDom.Id.HasValue)
             {
-                TarefaDto dto = Montador.Montador.Monta(tarefaDom);
-                return dto;
+                return mapper.Map<TarefaDto>(tarefaDom);                
             }
             else
             {
@@ -72,31 +113,29 @@ namespace Aplicacao.Servico.Implementacao
 
         public ICollection<TarefaDto> ListarTarefasNaoConcluidas(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
+            //Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
 
-            ICollection<Tarefa> tarefas = dominio.ListarTarefasNaoConcluidas(tarefaDom);
+            ICollection<Tarefa> tarefas = dominio.ListarTarefasNaoConcluidas(mapper.Map<Tarefa>(tarefa));
 
             if (tarefas != null && tarefas.Count > 0)
             {
-                ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
-                return dtos;
+
+                return mapper.Map<ICollection<Tarefa>, ICollection<TarefaDto>>(tarefas);
+                
             }
             else
             {
                 return null;
-            }
+            }             
         }
 
         public ICollection<TarefaDto> ListarTarefasAVencer(TarefaDto tarefa)
-        {
-            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
-
-            ICollection<Tarefa> tarefas = dominio.ListarTarefasAVencer(tarefaDom);
+        {            
+            ICollection<Tarefa> tarefas = dominio.ListarTarefasAVencer(mapper.Map<Tarefa>(tarefa));
 
             if (tarefas != null && tarefas.Count > 0)
             {
-                ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
-                return dtos;
+                return mapper.Map<ICollection<Tarefa>, ICollection<TarefaDto>>(tarefas);
             }
             else
             {
@@ -106,14 +145,12 @@ namespace Aplicacao.Servico.Implementacao
 
         public ICollection<TarefaDto> ListarTarefasConcluidas(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
-
-            ICollection<Tarefa> tarefas = dominio.ListarTarefasConcluidas(tarefaDom);
+            ICollection<Tarefa> tarefas = dominio.ListarTarefasConcluidas(mapper.Map<Tarefa>(tarefa));
 
             if (tarefas != null && tarefas.Count > 0)
             {
-                ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
-                return dtos;
+                //ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
+                return mapper.Map<ICollection<Tarefa>,ICollection<TarefaDto>>(tarefas);
             }
             else
             {
@@ -122,15 +159,12 @@ namespace Aplicacao.Servico.Implementacao
         }
 
         public ICollection<TarefaDto> ListarTarefasConcluidasForaDoPrazo(TarefaDto tarefa)
-        {
-            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
-
-            ICollection<Tarefa> tarefas = dominio.ListarTarefasConcluidasForaDoPrazo(tarefaDom);
+        {            
+            ICollection<Tarefa> tarefas = dominio.ListarTarefasConcluidasForaDoPrazo(mapper.Map<Tarefa>(tarefa));
 
             if (tarefas != null && tarefas.Count > 0)
             {
-                ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
-                return dtos;
+                return mapper.Map<ICollection<Tarefa>, ICollection<TarefaDto>>(tarefas);
             }
             else
             {
@@ -140,15 +174,15 @@ namespace Aplicacao.Servico.Implementacao
 
         public ICollection<TarefaDto> ListarTarefasAtrasadas(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
+            //Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
 
-            ICollection<Tarefa> tarefas = dominio.ListarTarefasAtrasadas(tarefaDom);
+            ICollection<Tarefa> tarefas = dominio.ListarTarefasAtrasadas(mapper.Map<Tarefa>(tarefa));
 
             if (tarefas != null && tarefas.Count > 0)
             {
-                ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
-
-                return dtos;
+                //ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
+                //return dtos;
+                return mapper.Map<ICollection<Tarefa>, ICollection<TarefaDto>>(tarefas);
             }
             else
             {
@@ -158,15 +192,15 @@ namespace Aplicacao.Servico.Implementacao
 
         public ICollection<TarefaDto> ListarTarefasPorData(DateTime dataInicio, DateTime dataTermino, TarefaDto tarefa)
         {
-            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
+            //Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
 
-            ICollection<Tarefa> tarefas = dominio.ListarTarefasPorData(dataInicio,dataTermino,tarefaDom);
+            ICollection<Tarefa> tarefas = dominio.ListarTarefasPorData(dataInicio, dataTermino, mapper.Map<Tarefa>(tarefa));
 
             if (tarefas != null && tarefas.Count > 0)
             {
-                ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
-
-                return dtos;
+                //ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
+                //return dtos;
+                return mapper.Map<ICollection<Tarefa>, ICollection<TarefaDto>>(tarefas);
             }
             else
             {
@@ -176,15 +210,16 @@ namespace Aplicacao.Servico.Implementacao
 
         public ICollection<TarefaDto> ListarTodasAsTarefasDoUsuario(TarefaDto tarefa)
         {
-            Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
+            //Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
 
-            ICollection<Tarefa> tarefas = dominio.ListarTodasAsTarefasDoUsuario(tarefaDom);
+            ICollection<Tarefa> tarefas = dominio.ListarTodasAsTarefasDoUsuario(mapper.Map<Tarefa>(tarefa));
 
             if (tarefas != null && tarefas.Count > 0)
             {
-                ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
+                /*ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
 
-                return dtos;
+                return dtos;*/
+                return mapper.Map<ICollection<Tarefa>, ICollection<TarefaDto>>(tarefas);
             }
             else
             {
