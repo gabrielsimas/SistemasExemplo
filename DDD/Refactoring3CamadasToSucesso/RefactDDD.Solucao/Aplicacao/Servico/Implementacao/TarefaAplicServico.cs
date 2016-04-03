@@ -192,14 +192,10 @@ namespace Aplicacao.Servico.Implementacao
 
         public ICollection<TarefaDto> ListarTarefasPorData(DateTime dataInicio, DateTime dataTermino, TarefaDto tarefa)
         {
-            //Tarefa tarefaDom = Montador.Montador.Monta(tarefa);
-
             ICollection<Tarefa> tarefas = dominio.ListarTarefasPorData(dataInicio, dataTermino, mapper.Map<Tarefa>(tarefa));
 
             if (tarefas != null && tarefas.Count > 0)
-            {
-                //ICollection<TarefaDto> dtos = Montador.Montador.Monta(tarefas);
-                //return dtos;
+            {         
                 return mapper.Map<ICollection<Tarefa>, ICollection<TarefaDto>>(tarefas);
             }
             else

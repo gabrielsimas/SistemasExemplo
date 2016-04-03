@@ -63,14 +63,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app.js" />
+    <Content Include="app.module.js" />
+    <Content Include="app.config.route.js" />
     <None Include="Scripts\angular.intellisense.js" />
     <Content Include="Controllers\tarefa-controller.js" />
     <Content Include="index.html" />
-    <Content Include="Scripts\lodash.js" />
-    <Content Include="Scripts\lodash.min.js" />
-    <Content Include="Scripts\restangular.js" />
-    <Content Include="Scripts\restangular.min.js" />
     <Content Include="Scripts\version.json" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-touch.min.js.map" />
@@ -879,7 +876,7 @@
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <None Include="Scripts\_references.js" />
-    <Content Include="Servicos\servicos.js" />
+    <Content Include="Servicos\app.service.factory.js" />
     <Content Include="Views\cadastrartarefa.html" />
     <Content Include="Views\listartarefa.html" />
     <Content Include="Web.config" />

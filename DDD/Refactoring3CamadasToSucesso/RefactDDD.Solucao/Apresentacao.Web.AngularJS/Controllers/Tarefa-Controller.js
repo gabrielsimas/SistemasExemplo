@@ -1,19 +1,28 @@
-﻿app.controller(
-    'TarefaCtrl',['$scope','TarefaAPI',
-    function ($scope,TarefaAPI) {
+﻿(function () {
+    'use strict';
+    angular.module('tarefaAdm')
+        .controller('TarefaCtrl', ['$scope', 'TarefaAPI', tarefaController]);
 
-        $scope.Listar = function () {
-            TarefaAPI.get({ idUsuario: 9, tipoBusca: 0, dataInicio: null, dataTermino: null },
-                function success(response) {
-                    console.log("Sucesso: " + JSON.stringify(response));
-                    $scope.Tarefas = response;
-                },
-                function error(errorResponse) {
-                    console.log("Erro:" + JSON.stringify(errorResponse));
-                }
-            );
-        }
+    tarefaController.$inject = ['$scope', 'TarefaAPI'];
+
+    function tarefaController($scope, TarefaAPI) {
+
+        var vm = this;
+
+        vm.Listar = listarTarefa;
+        
+        function listarTarefa() {
             
-
-    }
-]);
+            TarefaAPI.get({ idUsuario: 9, tipoBusca: 0, dataInicio: null, dataTermino: null },
+                    function (response) {                    
+                            console.log("Sucesso: " + JSON.stringify(response));
+                            vm.Tarefas = response;                    
+                    }                
+                , 
+                    function (errorResponse) {
+                        console.log("Erro:" + JSON.stringify(errorResponse));
+                    }
+                );                       
+        }        
+    }    
+})();

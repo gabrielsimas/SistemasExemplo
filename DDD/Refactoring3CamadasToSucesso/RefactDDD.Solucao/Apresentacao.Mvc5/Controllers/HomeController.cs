@@ -119,6 +119,7 @@ namespace Apresentacao.Mvc5.Controllers
 			return null;
 		}
 
+		[HttpPost]
 		public ActionResult Executar(Nullable<long> idTarefa)
 		{
 			TarefaDto dto;
@@ -248,21 +249,13 @@ namespace Apresentacao.Mvc5.Controllers
 
 			dto = new TarefaDto
 			{
-				Usuario = new UsuarioDto()
-				{
-					Id = idUsuario
-				}
+				IdUsuario = idUsuario
 			};
 
 			listaTodasAsTarefasDto = tarefaAplicacaoServico.ListarTodasAsTarefasDoUsuario(dto);
 
 			if (listaTodasAsTarefasDto != null && listaTodasAsTarefasDto.Count > 0)
-			{
-				//foreach (var linha in listaTodasAsTarefasDto){
-				//    linha.Usuario = new UsuarioDto() { Id = idUsuario };
-				//}
-
-				//listaTodasAsTarefas = Montador.MontaModeloDominioEViceVersa.Monta(listaTodasAsTarefasDto);
+			{				
 				return Mapeador.Map<ICollection<TarefaDto>,ICollection<TarefaListarModel>>(listaTodasAsTarefasDto);
 			}
 			else
@@ -278,23 +271,14 @@ namespace Apresentacao.Mvc5.Controllers
 			ICollection<TarefaListarModel> listaTarefasAVencer = new List<TarefaListarModel>();
 
 			dto = new TarefaDto
-			{
-				Usuario = new UsuarioDto()
-				{
-					Id = idUsuario
-				}
+			{			
+				IdUsuario = idUsuario
 			};
 
 			listaTarefasAVencerDto = tarefaAplicacaoServico.ListarTarefasAVencer(dto);
 
 			if (listaTarefasAVencerDto != null && listaTarefasAVencerDto.Count > 0)
-			{
-				//foreach (var linha in listaTarefasAVencerDto)
-				//{
-				//    linha.Usuario = new UsuarioDto() { Id = idUsuario };
-				//}
-
-				//listaTarefasAVencer = Montador.MontaModeloDominioEViceVersa.Monta(listaTarefasAVencerDto);
+			{			
 				return Mapeador.Map<ICollection<TarefaDto>, ICollection<TarefaListarModel>>(listaTarefasAVencerDto);
 			}
 			else
@@ -311,23 +295,13 @@ namespace Apresentacao.Mvc5.Controllers
 
 			dto = new TarefaDto
 			{
-				Usuario = new UsuarioDto()
-				{
-					Id = idUsuario
-				}
+				IdUsuario = idUsuario
 			};
 
 			listaTarefasExecutadasDto = tarefaAplicacaoServico.ListarTarefasConcluidas(dto);
 
 			if (listaTarefasExecutadasDto != null && listaTarefasExecutadasDto.Count > 0)
-			{
-				//foreach (var linha in listaTarefasExecutadasDto)
-				//{
-				//    linha.Usuario = new UsuarioDto() { Id = idUsuario };
-				//}
-
-				//listaTarefasExecutadas = Montador.MontaModeloDominioEViceVersa.Monta(listaTarefasExecutadasDto);
-				//return listaTarefasExecutadas;
+			{			
 				return Mapeador.Map<ICollection<TarefaDto>, ICollection<TarefaListarModel>>(listaTarefasExecutadasDto);
 			}
 
@@ -341,23 +315,13 @@ namespace Apresentacao.Mvc5.Controllers
 
 			dto = new TarefaDto
 			{
-				Usuario = new UsuarioDto()
-				{
-					Id = idUsuario
-				}
+				IdUsuario = idUsuario
 			};
 
 			listaTarefasVencidasDto = tarefaAplicacaoServico.ListarTarefasAtrasadas(dto);
 
 			if (listaTarefasVencidasDto != null && listaTarefasVencidasDto.Count > 0)
-			{
-				//foreach (var linha in listaTarefasVencidasDto)
-				//{
-				//    linha.Usuario = new UsuarioDto() { Id = idUsuario };
-				//}
-
-				//listaTarefasVencidas = Montador.MontaModeloDominioEViceVersa.Monta(listaTarefasVencidasDto);
-				//return listaTarefasVencidas;
+			{			
 				return Mapeador.Map<ICollection<TarefaDto>,ICollection<TarefaListarModel>>(listaTarefasVencidasDto);
 			}
 

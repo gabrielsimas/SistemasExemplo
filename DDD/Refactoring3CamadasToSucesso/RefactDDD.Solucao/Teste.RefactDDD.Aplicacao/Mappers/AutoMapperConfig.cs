@@ -19,14 +19,13 @@ namespace Teste.RefactDDD.Aplicacao.Mappers
                 {
 
                     cfg.CreateMap<Tarefa, TarefaDto>()                                                
-                        .ReverseMap();  
-
-                    cfg.CreateMap<Usuario, UsuarioDto>()                        
                         .ReverseMap();
 
                     cfg.CreateMap<TarefaCadastroModel, TarefaDto>()
-                        .ForMember(dto => dto.Usuario, opt => opt.Ignore()); //Ignora o Mapeamento de Usuario - filho de tarefa nesse caso - pq precisamos instanciar Usuario
-                    /*
+                        .ForMember(dto => dto.Usuario, opt => opt.Ignore());
+
+                    cfg.CreateMap<TarefaExcluirModel, TarefaDto>()
+                        .ForMember(dto => dto.Usuario, opt => opt.Ignore())
                         .AfterMap((model, dto) =>
                         {
                             if (model.IdUsuario.HasValue)
@@ -38,10 +37,19 @@ namespace Teste.RefactDDD.Aplicacao.Mappers
                             }
                         }
                         );
-                    */
-                    cfg.CreateMap<TarefaDto, TarefaCadastroModel>()
+
+                    cfg.CreateMap<Usuario, UsuarioDto>()
+                        .ForMember(dto => dto.Tarefas, entd => entd.MapFrom(e => e.Tarefas))
+                        .ReverseMap();
+                           
+                    cfg.CreateMap<Usuario, UsuarioDto>()                        
                         .ReverseMap();
 
+                    cfg.CreateMap<TarefaCadastroModel, TarefaDto>()
+                        .ForMember(dto => dto.Usuario, opt => opt.Ignore());
+
+                    cfg.CreateMap<TarefaDto, TarefaCadastroModel>()
+                        .ReverseMap();
 
                     cfg.CreateMap<TarefaEdicaoModel, TarefaDto>()
                         .ForMember(dto => dto.Usuario, opt => opt.Ignore()); //Ignora o Mapeamento de Usuario - filho de tarefa nesse caso - pq precisamos instancia/Usuario
@@ -64,7 +72,7 @@ namespace Teste.RefactDDD.Aplicacao.Mappers
                         
 
                     cfg.CreateMap<TarefaExcluirModel, TarefaDto>()
-                        .ForMember(dto => dto.Usuario, opt => opt.Ignore()) //Ignora o Mapeamento de Usuario - filho de tarefa nesse caso - pq precisamos instanciar Usuario
+                        .ForMember(dto => dto.Usuario, opt => opt.Ignore())
                         .AfterMap((model, dto) =>
                         {
                             if (model.IdUsuario.HasValue)

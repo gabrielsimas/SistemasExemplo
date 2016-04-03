@@ -31,6 +31,9 @@ namespace Apresentacao.Mvc5.App_Start
         /// Inicializa o Container existente na Camada de infraestrutura
         /// </summary>
         /// <param name="container">objeto do tipo IUnityContainer instanciado com o container</param>
+        
+        //Outros trechos ignorados por questão de didática...
+
         public static void RegisterTypes(IUnityContainer container)
         {
             ContainerDoUnity.InicializaContainer(container);

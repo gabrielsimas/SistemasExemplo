@@ -24,11 +24,7 @@ namespace Aplicacao.Mappers
                     cfg.CreateMap<Tarefa, TarefaDto>()                        
                         .ForMember(dto => dto.Usuario, opt => opt.Ignore())
                         .ReverseMap();
-                        
-
-                    //cfg.CreateMap<TarefaDto, Tarefa>()
-                    //    .ForMember(entd => entd.Usuario, dto => dto.MapFrom(d => d.Usuario));                        
-
+                                            
                     cfg.CreateMap<Usuario, UsuarioDto>()
                         .ForMember(dto => dto.Tarefas, entd => entd.MapFrom(e => e.Tarefas))
                         .ReverseMap();

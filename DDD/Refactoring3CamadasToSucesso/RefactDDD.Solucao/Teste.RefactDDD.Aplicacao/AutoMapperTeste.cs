@@ -125,7 +125,7 @@ namespace Teste.RefactDDD.Aplicacao
                     }
                 }
             };
-
+            
             dto = mapper.Map<UsuarioDto>(usuario);
 
             Assert.IsTrue(!String.IsNullOrEmpty(dto.Login));

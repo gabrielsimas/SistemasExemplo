@@ -68,15 +68,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Sgtv2.Ddd.Aplicacao">
-      <HintPath>..\bin\Sgtv2.Ddd.Aplicacao.dll</HintPath>
-    </Reference>
-    <Reference Include="Sgtv2.Ddd.Dominio">
-      <HintPath>..\bin\Sgtv2.Ddd.Dominio.dll</HintPath>
-    </Reference>
-    <Reference Include="Sgtv2.Ddd.Infraestrutura">
-      <HintPath>..\bin\Sgtv2.Ddd.Infraestrutura.dll</HintPath>
-    </Reference>
     <Reference Include="SHA3">
       <HintPath>..\packages\SHA3.0.9.2\lib\net40\SHA3.dll</HintPath>
     </Reference>
@@ -192,6 +183,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aplicacao\Aplicacao.csproj">
+      <Project>{a45ab5d7-acda-4b72-a869-d69075105bf7}</Project>
+      <Name>Aplicacao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{988eae79-d97c-4fc3-b7a3-7158f6ec34e8}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infraestrutura\Infraestrutura.csproj">
+      <Project>{a3a7bfd1-8e38-422e-afcb-968d9d9ce533}</Project>
+      <Name>Infraestrutura</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
