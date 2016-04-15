@@ -7,6 +7,8 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-
+<bean id="AutorServicoDominio" class="br.com.simasoft.editora.dominio.servico.autor.AutorServicoDominioImpl">
+	<constructor-arg ref="autorRepositorio" />
+</bean>
        
 </beans>	

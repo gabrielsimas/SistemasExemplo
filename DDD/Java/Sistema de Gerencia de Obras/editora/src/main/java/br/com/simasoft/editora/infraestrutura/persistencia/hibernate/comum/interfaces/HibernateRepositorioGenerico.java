@@ -1,4 +1,4 @@
-package br.com.simasoft.editora.infraestrutura.persistencia.hibernate.comum;
+package br.com.simasoft.editora.infraestrutura.persistencia.hibernate.comum.interfaces;
 
 import java.io.Serializable;
 import java.util.List;

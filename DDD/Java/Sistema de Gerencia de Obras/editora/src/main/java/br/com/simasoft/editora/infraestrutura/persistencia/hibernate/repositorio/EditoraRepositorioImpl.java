@@ -2,8 +2,8 @@ package br.com.simasoft.editora.infraestrutura.persistencia.hibernate.repositori
 
 import org.springframework.stereotype.Repository;
 
-import br.com.simasoft.editora.dominio.contrato.EditoraRepositorio;
-import br.com.simasoft.editora.dominio.entidade.Editora;
+import br.com.simasoft.editora.dominio.modelo.editora.Editora;
+import br.com.simasoft.editora.dominio.modelo.editora.EditoraRepositorio;
 import br.com.simasoft.editora.infraestrutura.persistencia.hibernate.comum.HibernateRepositorioGenericoImpl;
 
 @Repository

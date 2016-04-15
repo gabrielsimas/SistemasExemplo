@@ -3,36 +3,32 @@ package br.com.simasoft.editora.infraestrutura.persistencia.hibernate.comum;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import br.com.simasoft.editora.infraestrutura.persistencia.hibernate.comum.interfaces.HibernateRepositorioGenerico;
 
 /**
  * Classe genérica concreta para Repositório do Hibernate
  * @author 	Gabriel
- * @since	13/02/2016
  * @param 	<E> O tipo da Entidade
  * @param 	<ID> O tipo do Id da entidade
  */
 public class HibernateRepositorioGenericoImpl<E,ID extends Serializable> extends HibernateRepositorio implements HibernateRepositorioGenerico<E,ID> {
-
-	//private Class<E> entidade;
-	E entidade;
+		
+	private E entidade;
 				
 	public HibernateRepositorioGenericoImpl() {		
 		
 	}
-	
-	/*
-	public HibernateRepositorioGenericoImpl(Class<E> entidade) {		
-		this.entidade = entidade;
-	}
-	*/
-
+		
 	@Transactional
 	public void criar(E entidade) throws Exception {
 		
 		pegaSessao().save(entidade);
 	}
-
+	
 	@Transactional
 	public void apagar(E entidade) throws Exception {
 		pegaSessao().delete(entidade);
@@ -54,4 +50,11 @@ public class HibernateRepositorioGenericoImpl<E,ID extends Serializable> extends
 		return (E) pegaSessao().load((Class)entidade, chave);
 	}
 
+	public E getEntidade() {
+		return entidade;
+	}
+
+	public void setEntidade(E entidade) {
+		this.entidade = entidade;
+	}
 }
