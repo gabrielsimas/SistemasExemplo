@@ -1,0 +1,7 @@
+Estrutura das pastas do Projeto e descrição
+
+- public          Mantém todos os arquivos para nossa aplicação AngularJS
+----- core.js     Todo o código do AngularJS de nossa aplicação
+----- index.html  View principal 
+package.json      Configuração do npm para a instalação de módulos/dependências
+server.js         Configuração do Node.Js
