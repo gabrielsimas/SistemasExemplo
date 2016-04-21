@@ -1,0 +1,25 @@
+{
+  "name"         : "node-tarefa",
+  "version"      : "0.0.1",
+  "description"  : "Aplicacao Simples de Gerenciador de tarefas.",
+  "main"         : "server.js",
+  "author"       : "Gabriel Simas",  
+  "repository"   : 
+    {
+      "type"     : "git",
+      "url"      : "https://github.com/gabrielsimas/SistemasExemplo/tree/master/MEAN/TarefasSPA"
+    },
+  "bugs"         : 
+    {
+      "url"      : "https://github.com/gabrielsimas/SistemasExemplo/issues",
+      "email"    : "autorgabrielsimas@gmail.com"
+    },
+  "license": "MIT",    
+  "dependencies" : {
+    "body-parser"    : "^1.4.3",
+    "express"        : "^4.13.4",
+    "method-override": "^2.1.3",
+    "mongoose"       : "^4.4.12",
+    "morgan"         : "^1.1.1"
+  }
+}
