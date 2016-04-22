@@ -44,7 +44,8 @@ aplicacao.use(methodOverride());
 
 //Modelos da aplicação através do Mongoose
 var Tarefa = mongoose.model('Tarefa',{
-	texto: String
+	texto: String,
+	executada: Boolean
 	});
 
 
@@ -56,7 +57,15 @@ var Tarefa = mongoose.model('Tarefa',{
 aplicacao.get('/api/tarefas',pegaTodasAsTarefas);
 
 // Cria uma tarefa e como resposta devolve todas as tarefas criadas
-aplicacao.post('/api/tarefas,')
+aplicacao.post('/api/tarefas',criaTarefa);
+
+//Apaga uma tarefa
+aplicacao.delete('/api/tarefas/:tarefa_id',apagaTarefa);
+
+//AngularJS
+aplicacao.get('*',paginaInicialAngular);
+
+
 
 function pegaTodasAsTarefas(requisicao,resposta){	
 
@@ -74,21 +83,43 @@ function pegaTodasAsTarefas(requisicao,resposta){
 function criaTarefa(requisicao,resposta){
 
 	var tarefaModel = {
-		texto: requisicao.body.texto,
-		executada: false
+		text: requisicao.body.texto,
+		done: false
 	};
 
 	Tarefa.create(tarefaModel,create);
 
 	function create(erro,tarefa){
-		if (erro) resposta.send(erro)		
+		if (erro) resposta.send(erro)
+		resposta.json(tarefa);
 	}
 
 	pegaTodasAsTarefas;
 	
 }
 
+function apagaTarefa(requisicao,resposta){
 
+	var tarefaModel = {
+		_id: requisicao.params.todo_id
+	}
+
+	Tarefa.remove(tarefaModel,erase);
+
+	function erase(erro,tarefa){
+		if(erro){
+			resposta.send(erro);
+		}
+	}
+
+	pegaTodasAsTarefas;
+}
+
+function paginaInicialAngular(requisicao,resposta){	
+	// carrega uma única view em nosso caso (o angular irá gerenciar as alterações)
+	resposta.sendfile('.Publico/index.html'); 
+
+}
 //Inicio do servidor com a aplicação
 aplicacao.listen(9900);
 console.log("Gerenciado de Tarefas rodando na porta 9900");
