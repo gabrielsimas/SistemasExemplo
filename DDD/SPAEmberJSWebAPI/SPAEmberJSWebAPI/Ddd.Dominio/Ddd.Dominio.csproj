@@ -39,6 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modelo\Cliente\Cliente.cs" />
+    <Compile Include="Modelo\Comum\Checks.cs" />
+    <Compile Include="Modelo\Comum\ValueObject\Cep.cs" />
+    <Compile Include="Modelo\Comum\ValueObject\Cidade.cs" />
+    <Compile Include="Modelo\Comum\ValueObject\Cpf.cs" />
+    <Compile Include="Modelo\Comum\ValueObject\Email.cs" />
+    <Compile Include="Modelo\Comum\ValueObject\Endereco.cs" />
+    <Compile Include="Modelo\Comum\ValueObject\Estado.cs" />
+    <Compile Include="Modelo\Comum\ValueObject\FormaDePagamento.cs" />
+    <Compile Include="Modelo\Comum\ValueObject\Identidade.cs" />
+    <Compile Include="Modelo\Comum\ValueObject\Logradouro.cs" />
+    <Compile Include="Modelo\Comum\ValueObject\Nome.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
